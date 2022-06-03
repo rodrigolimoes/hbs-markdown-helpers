@@ -1,0 +1,19 @@
+{
+  "students": [
+    {
+      "name": "Rodrigo",
+      "lastName": "Limões",
+      "age": 23
+    },
+    {
+      "name": "João",
+      "lastName": "Silva",
+      "age": 20
+    },
+    {
+      "name": "Julia",
+      "lastName": "Silva",
+      "age": 24
+    }
+  ]
+}

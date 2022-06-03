@@ -1,0 +1,28 @@
+{
+  "name": "hbs-markdown-helpers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigolimoes/hbs-markdown-helpers.git"
+  },
+  "author": "rodrigo.limoes",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/rodrigolimoes/hbs-markdown-helpers/issues"
+  },
+  "homepage": "https://github.com/rodrigolimoes/hbs-markdown-helpers#readme",
+  "dependencies": {
+    "typescript": "^4.7.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.0",
+    "handlebars": "^4.7.7",
+    "jest": "^28.1.0",
+    "ts-jest": "^28.0.3"
+  }
+}
