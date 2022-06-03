@@ -51,4 +51,13 @@ describe("HelperMarkdown", () => {
     expect(template).toBeDefined();
     expect(template).not.toContain(hbsTemplate);
   });
+
+  it("Should be contain the return of HelperMarkdown", async () => {
+    const helpers = new HelperMarkdown().getHelpersMarkdown();
+    handlebarsHelpers.setMarkdownHelper(helpers);
+    const template = await handlebarsHelpers.compileTemplate();
+
+    expect(template).toBeDefined();
+    expect(template).toContain("md_table");
+  });
 });
