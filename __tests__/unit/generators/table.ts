@@ -44,4 +44,13 @@ describe("Markdown Table", () => {
       expect(message).toBe("Headers can't different length than data cells");
     }
   });
+
+  it("Should be return the column aligned in the center", async () => {
+    const table = new Table(data.students, {
+      align: "center",
+    }).generate();
+
+    expect(table).toBeDefined();
+    expect(table).toContain("\n | :----: | :----: | :----: | \n");
+  });
 });
