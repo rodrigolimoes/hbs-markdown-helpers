@@ -20,4 +20,28 @@ describe("Markdown Table", () => {
     expect(table).toBeDefined();
     expect(table).toContain("| Name | Age | \n | :--- | :--- | \n");
   });
+
+  it("Should return an error message if headers length is different that data cells length", async () => {
+    try {
+      new Table(data.students, {
+        headers: ["Name"],
+      }).generate();
+    } catch (e) {
+      const { message } = e as Error;
+      expect(e).toBeDefined();
+      expect(message).toBe("Headers can't different length than data cells");
+    }
+  });
+
+  it("Should return an error message if data cells length is different that headers length", async () => {
+    try {
+      new Table(data.students, {
+        dataCells: ["age"],
+      }).generate();
+    } catch (e) {
+      const { message } = e as Error;
+      expect(e).toBeDefined();
+      expect(message).toBe("Headers can't different length than data cells");
+    }
+  });
 });
