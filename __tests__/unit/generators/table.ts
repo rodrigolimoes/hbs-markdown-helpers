@@ -62,4 +62,13 @@ describe("Markdown Table", () => {
     expect(table).toBeDefined();
     expect(table).toContain(" \n | ---: | ---: | ---: | \n");
   });
+
+  it("Should be return the column aligned in the left", async () => {
+    const table = new Table(data.students, {
+      align: "left",
+    }).generate();
+
+    expect(table).toBeDefined();
+    expect(table).toContain("\n | :--- | :--- | :--- | \n");
+  });
 });
