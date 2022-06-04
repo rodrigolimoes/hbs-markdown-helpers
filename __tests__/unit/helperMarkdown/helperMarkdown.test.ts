@@ -3,10 +3,8 @@ import * as handlebars from "handlebars";
 import { HelperDeclareSpec } from "handlebars";
 import * as fs from "fs";
 import data from "../../data/data.json";
+import { Data } from "../../../src/libs/model/Data";
 
-interface Data {
-  [key: string]: any;
-}
 type Handlebars = typeof handlebars;
 
 class HandlebarsHelpers {
@@ -58,6 +56,12 @@ describe("HelperMarkdown", () => {
     const template = await handlebarsHelpers.compileTemplate();
 
     expect(template).toBeDefined();
-    expect(template).toContain("md_table");
+    expect(template).toContain(
+      "| name | lastName | age | \n" +
+        " | :--- | :--- | :--- | \n" +
+        "| Rodrigo | Limões | 23  | \n" +
+        "| João | Silva | 20  | \n" +
+        "| Julia | Silva | 24  | \n"
+    );
   });
 });
