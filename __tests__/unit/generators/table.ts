@@ -53,4 +53,13 @@ describe("Markdown Table", () => {
     expect(table).toBeDefined();
     expect(table).toContain("\n | :----: | :----: | :----: | \n");
   });
+
+  it("Should be return the column aligned in the right", async () => {
+    const table = new Table(data.students, {
+      align: "right",
+    }).generate();
+
+    expect(table).toBeDefined();
+    expect(table).toContain(" \n | ---: | ---: | ---: | \n");
+  });
 });
