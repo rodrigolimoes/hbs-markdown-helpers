@@ -29,7 +29,9 @@ describe("Markdown Table", () => {
     } catch (e) {
       const { message } = e as Error;
       expect(e).toBeDefined();
-      expect(message).toBe("Headers can't different length than data cells");
+      expect(message).toBe(
+        "The headers params cannot length different than datacells length"
+      );
     }
   });
 
@@ -41,7 +43,9 @@ describe("Markdown Table", () => {
     } catch (e) {
       const { message } = e as Error;
       expect(e).toBeDefined();
-      expect(message).toBe("Headers can't different length than data cells");
+      expect(message).toBe(
+        "The headers params cannot length different than datacells length"
+      );
     }
   });
 

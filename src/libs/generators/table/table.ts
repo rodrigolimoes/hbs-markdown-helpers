@@ -83,7 +83,9 @@ export default class Table {
     }
 
     if (dataCells.length !== headers.length)
-      throw new Error("Headers can't different length than data cells");
+      throw new Error(
+        "The headers params cannot length different than datacells length"
+      );
 
     // Insert a header in table
     tableSintax += this.setMarkdownHeader(headers, align);
