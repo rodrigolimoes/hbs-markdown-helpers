@@ -15,5 +15,22 @@
       "lastName": "Silva",
       "age": 24
     }
+  ],
+  "todoList": [
+    {
+      "checked": true,
+      "label": "Text Label 1",
+      "label2": "Text Label 2"
+    },
+    {
+      "checked": false,
+      "label": "Text Label 1",
+      "label2": "Text Label 2"
+    },
+    {
+      "checked": true,
+      "label": "Text Label 1",
+      "label2": "Text Label 2"
+    }
   ]
 }
