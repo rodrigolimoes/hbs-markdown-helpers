@@ -11,7 +11,7 @@ describe("CheckList", () => {
     );
   });
 
-  it("Should return a checklist when label property specified ", () => {
+  it("Should return a checklist when label property is specified ", () => {
     const checklist = new CheckList(todoList, { label: "label2" }).generate();
 
     expect(checklist).toBeDefined();
@@ -20,7 +20,7 @@ describe("CheckList", () => {
     );
   });
 
-  it("Should return a checklist when checked property specified", () => {
+  it("Should return a checklist when checked property is specified", () => {
     const checklist = new CheckList(todoList, {
       checked: "checked",
     }).generate();
@@ -28,6 +28,18 @@ describe("CheckList", () => {
     expect(checklist).toBeDefined();
     expect(checklist).toEqual(
       `- [X] Text Label 1 \n- [ ] Text Label 1 \n- [X] Text Label 1 \n`
+    );
+  });
+
+  it("Should return a checklist when checked and label property is specified", () => {
+    const checklist = new CheckList(todoList, {
+      checked: "checked",
+      label: "label2",
+    }).generate();
+
+    expect(checklist).toBeDefined();
+    expect(checklist).toEqual(
+      `- [X] Text Label 2 \n- [ ] Text Label 2 \n- [X] Text Label 2 \n`
     );
   });
 });
