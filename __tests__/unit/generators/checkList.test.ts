@@ -19,4 +19,15 @@ describe("CheckList", () => {
       `- [X] Text Label 2 \n- [ ] Text Label 2 \n- [X] Text Label 2 \n`
     );
   });
+
+  it("Should return a checklist when checked property specified", () => {
+    const checklist = new CheckList(todoList, {
+      checked: "checked",
+    }).generate();
+
+    expect(checklist).toBeDefined();
+    expect(checklist).toEqual(
+      `- [X] Text Label 1 \n- [ ] Text Label 1 \n- [X] Text Label 1 \n`
+    );
+  });
 });
