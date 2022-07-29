@@ -43,7 +43,7 @@ describe("CheckList", () => {
     );
   });
 
-  it("Should return a checklist with undefined label when its property doesn't exist in object.", () => {
+  it("Should return a checklist with undefined label when its property doesn't exist in object", () => {
     const checklist = new CheckList(todoList, {
       label: "123",
     }).generate();
@@ -51,6 +51,15 @@ describe("CheckList", () => {
     expect(checklist).toBeDefined();
     expect(checklist).toEqual(
       `- [X] undefined \n- [ ] undefined \n- [X] undefined \n`
+    );
+  });
+
+  it("Should return a checklist with undefined checked when its property doesn't exist in object", () => {
+    const checklist = new CheckList(todoList, { checked: "123" }).generate();
+
+    expect(checklist).toBeDefined();
+    expect(checklist).toEqual(
+      `- [ ] Text Label 1 \n- [ ] Text Label 1 \n- [ ] Text Label 1 \n`
     );
   });
 });
