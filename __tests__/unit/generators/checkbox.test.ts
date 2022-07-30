@@ -8,7 +8,7 @@ describe("Checkbox", () => {
     }).generate();
 
     expect(checkbox).toBeDefined();
-    expect(checkbox).toEqual("- [X] Label 1 \n");
+    expect(checkbox).toEqual("- [X] Label 1\n");
   });
 
   it("Should return a unchecked checkbox", () => {
@@ -18,6 +18,6 @@ describe("Checkbox", () => {
     }).generate();
 
     expect(checkbox).toBeDefined();
-    expect(checkbox).toEqual("- [ ] Label 1 \n");
+    expect(checkbox).toEqual("- [ ] Label 1\n");
   });
 });
