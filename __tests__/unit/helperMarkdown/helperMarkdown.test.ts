@@ -93,4 +93,17 @@ describe("HelperMarkdown", () => {
         "- [X] Text Label 2 \n"
     );
   });
+
+  it("Should return a checklist with checked value equal to a value of the object property specified", async () => {
+    const helpers = new HelperMarkdown().getHelpersMarkdown();
+    handlebarsHelpers.setMarkdownHelper(helpers);
+    const template = await handlebarsHelpers.compileTemplate();
+
+    expect(template).toBeDefined();
+    expect(template).toContain(
+      "- [X] Text Label 1 \n" +
+        "- [ ] Text Label 1 \n" +
+        "- [X] Text Label 1 \n"
+    );
+  });
 });
