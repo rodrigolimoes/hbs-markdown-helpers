@@ -1,4 +1,4 @@
-import { Table, CheckList } from "../generators/index";
+import { Table, CheckList, Checkbox } from "../generators/index";
 import { OptionsTable } from "../model/Table/OptionTable";
 import { ChecklistParams } from "../model/Checklist/ChecklistParams";
 import { Data } from "../model/Data/Data";
@@ -21,11 +21,12 @@ export default class HelperMarkdown {
 
         if (options && options.hash) {
           const { hash } = options;
+          const { propChecked, propLabel } = hash;
 
-          if (hash.propLabel || hash.propChecked) {
+          if (propLabel || propChecked) {
             customProps = {
-              checked: hash && hash.propChecked ? hash.propChecked : undefined,
-              label: hash && hash.propLabel ? hash.propLabel : undefined,
+              checked: hash && propChecked ? propChecked : undefined,
+              label: hash && propLabel ? propLabel : undefined,
             };
           } else {
             customProps = undefined;
@@ -34,6 +35,26 @@ export default class HelperMarkdown {
 
         const checkboxList = new CheckList(data, customProps);
         return checkboxList.generate();
+      },
+      md_checkbox: (options: {
+        hash?: { checked: boolean; label: string };
+      }) => {
+        if (options && options.hash) {
+          const { hash } = options;
+          const { checked, label } = hash;
+
+          if (!label) new Error("propLabel cannot be undefined");
+
+          if (checked === undefined)
+            new Error("propChecked cannot be undefined");
+
+          return new Checkbox({
+            checked: checked,
+            label: label,
+          }).generate();
+        } else {
+          new Error("Parameters cannot be undefined");
+        }
       },
     };
   };
