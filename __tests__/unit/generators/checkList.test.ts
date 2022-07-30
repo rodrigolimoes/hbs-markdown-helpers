@@ -1,4 +1,4 @@
-import CheckList from "../../../src/libs/generators/checkbox/checkList";
+import CheckList from "../../../src/libs/generators/checklist/checkList";
 import { todoList } from "../../data/data.json";
 
 describe("CheckList", () => {
@@ -7,7 +7,7 @@ describe("CheckList", () => {
 
     expect(checkList).toBeDefined();
     expect(checkList).toEqual(
-      `- [X] Text Label 1 \n- [ ] Text Label 1 \n- [X] Text Label 1 \n`
+      `- [X] Text Label 1\n- [ ] Text Label 1\n- [X] Text Label 1\n`
     );
   });
 
@@ -16,7 +16,7 @@ describe("CheckList", () => {
 
     expect(checklist).toBeDefined();
     expect(checklist).toEqual(
-      `- [X] Text Label 2 \n- [ ] Text Label 2 \n- [X] Text Label 2 \n`
+      `- [X] Text Label 2\n- [ ] Text Label 2\n- [X] Text Label 2\n`
     );
   });
 
@@ -27,7 +27,7 @@ describe("CheckList", () => {
 
     expect(checklist).toBeDefined();
     expect(checklist).toEqual(
-      `- [X] Text Label 1 \n- [ ] Text Label 1 \n- [X] Text Label 1 \n`
+      `- [X] Text Label 1\n- [ ] Text Label 1\n- [X] Text Label 1\n`
     );
   });
 
@@ -39,7 +39,7 @@ describe("CheckList", () => {
 
     expect(checklist).toBeDefined();
     expect(checklist).toEqual(
-      `- [X] Text Label 2 \n- [ ] Text Label 2 \n- [X] Text Label 2 \n`
+      `- [X] Text Label 2\n- [ ] Text Label 2\n- [X] Text Label 2\n`
     );
   });
 
@@ -50,7 +50,7 @@ describe("CheckList", () => {
 
     expect(checklist).toBeDefined();
     expect(checklist).toEqual(
-      `- [X] undefined \n- [ ] undefined \n- [X] undefined \n`
+      `- [X] undefined\n- [ ] undefined\n- [X] undefined\n`
     );
   });
 
@@ -59,7 +59,7 @@ describe("CheckList", () => {
 
     expect(checklist).toBeDefined();
     expect(checklist).toEqual(
-      `- [ ] Text Label 1 \n- [ ] Text Label 1 \n- [ ] Text Label 1 \n`
+      `- [ ] Text Label 1\n- [ ] Text Label 1\n- [ ] Text Label 1\n`
     );
   });
 });

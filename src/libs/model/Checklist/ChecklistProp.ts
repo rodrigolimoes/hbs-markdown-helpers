@@ -1,4 +1,4 @@
-export interface OptionsCheckbox {
+export interface ChecklistProp {
   checked?: string;
   label?: string;
 }

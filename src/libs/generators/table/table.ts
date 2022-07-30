@@ -1,5 +1,5 @@
-import { Data } from "../../model/Data";
-import { OptionsTable } from "../../model/OptionTable";
+import { Data } from "../../model/Data/Data";
+import { OptionsTable } from "../../model/Table/OptionTable";
 import { Alignment } from "../../common/tableAlignment.enum";
 
 export default class Table {

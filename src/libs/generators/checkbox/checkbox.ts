@@ -1,21 +1,22 @@
-export default class Checkbox {
-  private readonly checked: boolean;
-  private readonly label: string;
+import { CheckboxProp } from "../../model/Checkbox/CheckboxProp";
 
-  constructor(checked: boolean, label: string) {
-    this.checked = checked;
-    this.label = label;
+export default class Checkbox {
+  private readonly prop: CheckboxProp;
+
+  constructor(prop: CheckboxProp) {
+    this.prop = prop;
   }
 
-  setCheked = () => {
-    return `- [${this.checked ? "X" : " "}] `;
+  setCheked = (isChecked: boolean) => {
+    return `- [${isChecked ? "X" : " "}] `;
   };
 
-  setLabel = () => {
-    return `${this.label} \n`;
+  setLabel = (label: string) => {
+    return `${label}\n`;
   };
 
   generate = () => {
-    return `${this.setCheked()}${this.setLabel()}`;
+    const { checked, label } = this.prop;
+    return `${this.setCheked(checked)}${this.setLabel(label)}`;
   };
 }
