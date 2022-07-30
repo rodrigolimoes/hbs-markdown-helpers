@@ -39,21 +39,21 @@ export default class HelperMarkdown {
       md_checkbox: (options: {
         hash?: { checked: boolean; label: string };
       }) => {
-        if (options && options.hash) {
-          const { hash } = options;
-          const { checked, label } = hash;
+        try {
+          if (options && options.hash) {
+            const { hash } = options;
+            const { checked, label } = hash;
 
-          if (!label) new Error("propLabel cannot be undefined");
+            if (!label || checked === undefined)
+              throw new Error("propLabel or propChecked cannot be undefined");
 
-          if (checked === undefined)
-            new Error("propChecked cannot be undefined");
-
-          return new Checkbox({
-            checked: checked,
-            label: label,
-          }).generate();
-        } else {
-          new Error("Parameters cannot be undefined");
+            return new Checkbox({
+              checked: checked,
+              label: label,
+            }).generate();
+          }
+        } catch (e) {
+          throw e;
         }
       },
     };
