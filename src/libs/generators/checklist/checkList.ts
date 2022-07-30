@@ -33,14 +33,16 @@ export default class CheckList {
         defaultChecked = element[prop.checked];
         defaultLabel = element[prop.label];
       } else {
+        let controllerPropChecked = false;
         for (const key in element) {
           if (!prop) {
             if (this.isString(element[key]) && defaultLabel === "") {
               defaultLabel = element[key];
             }
 
-            if (this.isBoolean(element[key])) {
+            if (this.isBoolean(element[key]) && !controllerPropChecked) {
               defaultChecked = element[key];
+              controllerPropChecked = true;
             }
           }
 

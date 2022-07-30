@@ -75,9 +75,7 @@ describe("HelperMarkdown", () => {
 
     expect(template).toBeDefined();
     expect(template).toContain(
-      "- [X] Text Label 1 \n" +
-        "- [ ] Text Label 1 \n" +
-        "- [X] Text Label 1 \n"
+      "- [X] Text Label 1\n" + "- [ ] Text Label 1\n" + "- [X] Text Label 1\n"
     );
   });
 
@@ -88,9 +86,7 @@ describe("HelperMarkdown", () => {
 
     expect(template).toBeDefined();
     expect(template).toContain(
-      "- [X] Text Label 2 \n" +
-        "- [ ] Text Label 2 \n" +
-        "- [X] Text Label 2 \n"
+      "- [X] Text Label 2\n" + "- [ ] Text Label 2\n" + "- [X] Text Label 2\n"
     );
   });
 
@@ -101,9 +97,18 @@ describe("HelperMarkdown", () => {
 
     expect(template).toBeDefined();
     expect(template).toContain(
-      "- [X] Text Label 1 \n" +
-        "- [ ] Text Label 1 \n" +
-        "- [X] Text Label 1 \n"
+      "- [ ] Text Label 1\n" + "- [X] Text Label 1\n" + "- [ ] Text Label 1\n"
+    );
+  });
+
+  it("Should return a checklist with checked and label values equal to values of the object properties specified", async () => {
+    const helpers = new HelperMarkdown().getHelpersMarkdown();
+    handlebarsHelpers.setMarkdownHelper(helpers);
+    const template = await handlebarsHelpers.compileTemplate();
+
+    expect(template).toBeDefined();
+    expect(template).toContain(
+      "- [X] Text Label 2\n" + "- [ ] Text Label 2\n" + "- [X] Text Label 2\n"
     );
   });
 });

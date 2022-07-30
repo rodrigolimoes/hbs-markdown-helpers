@@ -19,16 +19,19 @@
   "todoList": [
     {
       "checked": true,
+      "otherChecked": false,
       "label": "Text Label 1",
       "label2": "Text Label 2"
     },
     {
       "checked": false,
+      "otherChecked": true,
       "label": "Text Label 1",
       "label2": "Text Label 2"
     },
     {
       "checked": true,
+      "otherChecked": false,
       "label": "Text Label 1",
       "label2": "Text Label 2"
     }

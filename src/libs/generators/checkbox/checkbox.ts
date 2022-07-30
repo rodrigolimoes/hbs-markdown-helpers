@@ -12,7 +12,7 @@ export default class Checkbox {
   };
 
   setLabel = (label: string) => {
-    return `${label} \n`;
+    return `${label}\n`;
   };
 
   generate = () => {
