@@ -67,4 +67,17 @@ describe("HelperMarkdown", () => {
         "| Julia | Silva | 24  | \n"
     );
   });
+
+  it("Should return a checklist if params is undefined", async () => {
+    const helpers = new HelperMarkdown().getHelpersMarkdown();
+    handlebarsHelpers.setMarkdownHelper(helpers);
+    const template = await handlebarsHelpers.compileTemplate();
+
+    expect(template).toBeDefined();
+    expect(template).toContain(
+      "- [X] Text Label 1 \n" +
+        "- [ ] Text Label 1 \n" +
+        "- [X] Text Label 1 \n"
+    );
+  });
 });
