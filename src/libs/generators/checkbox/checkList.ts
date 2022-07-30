@@ -1,14 +1,14 @@
-import { Data } from "../../model/Data";
-import { OptionsCheckbox } from "../../model/OptionCheckbox";
+import { Data } from "../../model/Data/Data";
+import { ChecklistProp } from "../../model/Checklist/ChecklistProp";
 import Checkbox from "./checkbox";
 
 export default class CheckList {
   private data: Array<Data>;
-  private options?: OptionsCheckbox;
+  private prop?: ChecklistProp;
 
-  constructor(data: Array<Data>, options?: OptionsCheckbox) {
+  constructor(data: Array<Data>, prop?: ChecklistProp) {
     this.data = data;
-    this.options = options;
+    this.prop = prop;
   }
 
   isBoolean = (value: any) => {
@@ -19,71 +19,51 @@ export default class CheckList {
     return typeof value === "string";
   };
 
-  customCheckboxList = (
-    data: Array<Data>,
-    { checked, label }: OptionsCheckbox
-  ): string => {
-    let checkList: string = "";
-
-    if (checked && label) {
-      data.forEach((e) => {
-        const checkbox = new Checkbox(e[checked], e[label]);
-
-        checkList += checkbox.generate();
-      });
-    } else {
-      data.forEach((e) => {
-        let defaultCheckbox: any = {
-          checked: checked ? e[checked] : false,
-          label: label ? e[label] : "",
-        };
-
-        for (const key in e) {
-          if (!label && this.isString(e[key])) {
-            defaultCheckbox.label = e[key];
-            break;
-          }
-
-          if (!checked && this.isBoolean(e[key])) {
-            defaultCheckbox.checked = e[key];
-            break;
-          }
-        }
-        const checkbox = new Checkbox(
-          defaultCheckbox.checked,
-          defaultCheckbox.label
-        );
-        checkList += checkbox.generate();
-      });
-    }
-
-    return checkList;
-  };
-
   generate() {
-    const { data, options } = this;
+    const { data, prop } = this;
     let checkList: string = "";
 
-    if (!options) {
-      data.forEach((e) => {
-        let checked: boolean = false;
-        let label: string = "";
+    let defaultChecked: boolean = false;
+    let defaultLabel: string = "";
 
-        for (const key in e) {
-          if (this.isBoolean(e[key])) {
-            checked = e[key];
+    for (let i = 0; i < data.length; i++) {
+      const element = data[i];
+
+      if (prop && prop.checked && prop.label) {
+        defaultChecked = element[prop.checked];
+        defaultLabel = element[prop.label];
+      } else {
+        for (const key in element) {
+          if (!prop) {
+            if (this.isString(element[key]) && defaultLabel === "") {
+              defaultLabel = element[key];
+            }
+
+            if (this.isBoolean(element[key])) {
+              defaultChecked = element[key];
+            }
           }
 
-          if (this.isString(e[key]) && label === "") {
-            label = e[key];
+          if (prop && (!prop.label || !prop.checked)) {
+            if (!prop.checked && this.isBoolean(element[key])) {
+              defaultChecked = element[key];
+              defaultLabel = prop.label ? element[prop.label] : "";
+              break;
+            }
+
+            if (!prop.label && this.isString(element[key])) {
+              defaultLabel = element[key];
+              defaultChecked = prop.checked ? element[prop.checked] : false;
+              break;
+            }
           }
         }
-
-        const checkbox = new Checkbox(checked, label);
-        checkList += checkbox.generate();
+      }
+      const checkbox = new Checkbox({
+        checked: defaultChecked,
+        label: defaultLabel,
       });
-    } else {
-      checkList += this.customCheckboxList(data, options);
+      checkList += checkbox.generate();
     }
 
     return checkList;
