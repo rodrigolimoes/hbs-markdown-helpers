@@ -1,5 +1,15 @@
-# Table without options
+# Table without params
 {{md_table this.students}}
 
-# Table with options
+# Table with params
 {{md_table this.students headers=(array "Name,Age") dataCells=(array "name,age") align="center"}}
+
+# CheckList with params
+{{md_checklist this.todoList propLabel="label2" propchecked="checked"}}
+_________________
+{{md_checklist this.todoList propchecked="checked"}}
+_________________
+{{md_checklist this.todoList propLabel="label2"}}
+
+# CheckList without params
+{{md_checklist this.todoList}}

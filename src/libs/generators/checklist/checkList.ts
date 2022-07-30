@@ -1,6 +1,6 @@
 import { Data } from "../../model/Data/Data";
 import { ChecklistProp } from "../../model/Checklist/ChecklistProp";
-import Checkbox from "./checkbox";
+import Checkbox from "../checkbox/checkbox";
 
 export default class CheckList {
   private data: Array<Data>;
