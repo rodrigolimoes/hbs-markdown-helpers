@@ -7,3 +7,5 @@ export const isBoolean = (value: unknown): boolean =>
   typeof value === "boolean";
 
 export const isNumber = (value: unknown): boolean => typeof value === "number";
+
+export const isArray = (value: unknown): boolean => Array.isArray(value);

@@ -1,14 +1,18 @@
 import { Data } from "../../model/Data/Data";
-import { OptionsTable } from "../../model/Table/OptionTable";
+import { TableProps } from "../../model/Table/TableProps";
 import { Alignment } from "../../common/tableAlignment.enum";
+import { isDate, isBoolean, isNumber, isArray } from "../../utils/utilsType";
+import { formatDate } from "../../utils/formatDate";
+import { formatBooleanValue } from "../../utils/formatBooleanValue";
+import { formatArray } from "../../utils/formatArray";
 
 export default class Table {
-  private readonly data: Data[];
-  private readonly options?: OptionsTable;
+  private readonly data: Array<Data>;
+  private readonly props?: TableProps;
 
-  constructor(data: Data[], options?: OptionsTable) {
+  constructor(data: Array<Data>, props?: TableProps) {
     this.data = data;
-    this.options = options;
+    this.props = props;
   }
 
   /**
@@ -30,9 +34,11 @@ export default class Table {
    */
   private setMarkdownHeader(headers: Array<string>, align: string) {
     let tableHeaderSintax: string = "";
-    headers.forEach((e) => {
-      tableHeaderSintax += `| ${e} `;
-    });
+
+    for (let i: number = 0; i < headers.length; i++) {
+      const element = headers[i];
+      tableHeaderSintax += `| **${element}** `;
+    }
 
     tableHeaderSintax += this.setMarkdownTableAlign(align, headers.length);
 
@@ -45,14 +51,29 @@ export default class Table {
    * @param data
    * @return tableLineSyntax
    */
-  private setDataCells = (dataCells: Array<string>, data: Data) => {
+  private setDataCell = (dataCells: Array<string>, data: Data) => {
     let tableLineSyntax: string = "";
+    let language = this.props && this.props.language ? this.props.language : "";
     for (let j: number = 0; j < dataCells.length; j++) {
-      tableLineSyntax += `| ${
-        data.hasOwnProperty(dataCells[j]) ? data[dataCells[j]] : "unknown"
-      } `;
+      let element = data.hasOwnProperty(dataCells[j])
+        ? data[dataCells[j]]
+        : "unknown";
+
+      if (isBoolean(element)) {
+        element = formatBooleanValue({ value: element, language });
+      }
+
+      if (isDate(element) && !isNumber(element)) {
+        element = formatDate({ isoDate: element, language });
+      }
+
+      if (isArray(element)) {
+        element = formatArray({ elementArray: element, language });
+      }
+
+      tableLineSyntax += `| ${element} `;
     }
-    tableLineSyntax += " | \n";
+    tableLineSyntax += "| \n";
 
     return tableLineSyntax;
   };
@@ -61,38 +82,28 @@ export default class Table {
    * Generate a table
    */
   generate() {
-    const data = this.data;
+    const { data, props } = this;
     const dataProperties = Object.keys(Object.assign({}, ...data));
+    const align: string =
+      props && props.align ? Alignment[props.align] : Alignment["left"];
+    const headers: Array<string> =
+      props && props.headers
+        ? props.headers
+        : dataProperties.map((e) => e.toUpperCase());
+    const dataCells: Array<string> =
+      props && props.dataCells ? props.dataCells : dataProperties;
     let tableSintax: string = "";
-    let align: string;
-    let dataCells: Array<string>;
-    let headers: Array<string>;
-
-    if (this.options) {
-      align = this.options.align
-        ? Alignment[this.options.align]
-        : Alignment["left"];
-      dataCells = this.options.dataCells
-        ? this.options.dataCells
-        : dataProperties;
-      headers = this.options.headers ? this.options.headers : dataProperties;
-    } else {
-      align = Alignment["left"];
-      dataCells = dataProperties;
-      headers = dataProperties.map((e) => e.toUpperCase());
-    }
 
     if (dataCells.length !== headers.length)
       throw new Error(
         "The headers params cannot length different than datacells length"
       );
 
-    // Insert a header in table
     tableSintax += this.setMarkdownHeader(headers, align);
 
-    // Insert a data cells in table
+    //Insert the data cells in table
     for (let i: number = 0; i < data.length; i++) {
-      tableSintax += this.setDataCells(dataCells, data[i]);
+      tableSintax += this.setDataCell(dataCells, data[i]);
     }
 
     return tableSintax;

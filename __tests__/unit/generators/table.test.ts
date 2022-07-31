@@ -7,18 +7,20 @@ describe("Markdown Table", () => {
 
     expect(table).toBeDefined();
     expect(table).toContain(
-      "| NAME | LASTNAME | AGE | \n | :--- | :--- | :--- | \n"
+      "| **NAME** | **LASTNAME** | **AGE** | **BIRTHDATA** | **ISMATRICULATE** | **SUBJECTS** | \n | :--- | :--- | :--- | :--- | :--- | :--- | \n"
     );
   });
 
   it("Should be return a header when the header and datacells is expecify", async () => {
     const table = new Table(data.students, {
-      headers: ["Name", "Age"],
-      dataCells: ["name", "age"],
+      headers: ["Name", "Age", "Birth Data", "Matriculate", "Subjects"],
+      dataCells: ["name", "age", "birthData", "isMatriculate", "subjects"],
     }).generate();
 
     expect(table).toBeDefined();
-    expect(table).toContain("| Name | Age | \n | :--- | :--- | \n");
+    expect(table).toContain(
+      "| **Name** | **Age** | **Birth Data** | **Matriculate** | **Subjects** | \n | :--- | :--- | :--- | :--- | :--- | \n"
+    );
   });
 
   it("Should return an error message if headers length is different that data cells length", async () => {
@@ -55,7 +57,9 @@ describe("Markdown Table", () => {
     }).generate();
 
     expect(table).toBeDefined();
-    expect(table).toContain("\n | :----: | :----: | :----: | \n");
+    expect(table).toContain(
+      "\n | :----: | :----: | :----: | :----: | :----: | :----: | \n"
+    );
   });
 
   it("Should be return the column aligned in the right", async () => {
@@ -64,7 +68,9 @@ describe("Markdown Table", () => {
     }).generate();
 
     expect(table).toBeDefined();
-    expect(table).toContain(" \n | ---: | ---: | ---: | \n");
+    expect(table).toContain(
+      " \n | ---: | ---: | ---: | ---: | ---: | ---: | \n"
+    );
   });
 
   it("Should be return the column aligned in the left", async () => {
@@ -73,6 +79,8 @@ describe("Markdown Table", () => {
     }).generate();
 
     expect(table).toBeDefined();
-    expect(table).toContain("\n | :--- | :--- | :--- | \n");
+    expect(table).toContain(
+      "\n | :--- | :--- | :--- | :--- | :--- | :--- | \n"
+    );
   });
 });

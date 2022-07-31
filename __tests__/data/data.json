@@ -3,17 +3,26 @@
     {
       "name": "Rodrigo",
       "lastName": "Limões",
-      "age": 23
+      "age": 23,
+      "birthData": "1998-9-21",
+      "isMatriculate": true,
+      "subjects": ["JavaScript", "Reactjs", "Css"]
     },
     {
       "name": "João",
       "lastName": "Silva",
-      "age": 20
+      "age": 20,
+      "birthData": "2000-9-21",
+      "isMatriculate": true,
+      "subjects": ["TypeScript", "Nodejs", "Mongodb"]
     },
     {
       "name": "Julia",
       "lastName": "Silva",
-      "age": 24
+      "age": 24,
+      "birthData": "1997-9-21",
+      "isMatriculate": false,
+      "subjects": ["Reactjs", "TypeScript"]
     }
   ],
   "todoList": [
