@@ -1,5 +1,3 @@
-import HelperMarkdown from './libs/helperMarkdown/helperMarkdown';
+import { getHelpersMarkdown } from "./libs/helpers";
 
-export {
-    HelperMarkdown
-}
+export { getHelpersMarkdown };
