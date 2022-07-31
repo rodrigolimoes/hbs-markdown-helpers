@@ -1,6 +1,6 @@
-import { tableHelper } from "./tableHelper/tableHelper";
-import { checkListHelper } from "./checkListHelper/checkListHelper";
-import { checkboxHelper } from "./checkboxHelper/checkboxHelper";
+import { tableHelper } from "./table/tableHelper";
+import { checkListHelper } from "./checkList/checkListHelper";
+import { checkboxHelper } from "./checkbox/checkboxHelper";
 
 export const getHelpersMarkdown = () => {
   return {
