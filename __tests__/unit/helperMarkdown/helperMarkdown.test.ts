@@ -62,8 +62,8 @@ describe("HelperMarkdown", () => {
     expect(template).toContain(
       "| **NAME** | **LASTNAME** | **AGE** | **BIRTHDATA** | **ISMATRICULATE** | **SUBJECTS** | \n" +
         " | :--- | :--- | :--- | :--- | :--- | :--- | \n" +
-        "| Rodrigo | Limões | 23 | 1998-09-21 | Yes | JavaScript,Reactjs, and Css | \n" +
-        "| João | Silva | 20 | 2000-09-21 | Yes | TypeScript,Nodejs, and Mongodb | \n" +
+        "| Rodrigo | Limões | 23 | 1998-09-21 | Yes | JavaScript, Reactjs, and Css | \n" +
+        "| João | Silva | 20 | 2000-09-21 | Yes | TypeScript, Nodejs, and Mongodb | \n" +
         "| Julia | Silva | 24 | 1997-09-21 | No | Reactjs, and TypeScript | \n"
     );
   });

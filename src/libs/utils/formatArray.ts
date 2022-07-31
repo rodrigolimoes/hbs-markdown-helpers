@@ -16,5 +16,5 @@ export const formatArray = ({ elementArray, language }: FormatArray) => {
       connectionString = ", and ";
       break;
   }
-  return `${array.join(",")}${connectionString}${lastValue}`;
+  return `${array.join(", ")}${connectionString}${lastValue}`;
 };
