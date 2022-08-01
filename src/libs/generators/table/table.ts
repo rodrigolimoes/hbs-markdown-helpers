@@ -53,22 +53,22 @@ export default class Table {
    */
   private setDataCell = (dataCells: Array<string>, data: Data) => {
     let tableLineSyntax: string = "";
-    let language = this.props && this.props.language ? this.props.language : "";
+    let style = this.props && this.props.style ? this.props.style : "";
     for (let j: number = 0; j < dataCells.length; j++) {
       let element = data.hasOwnProperty(dataCells[j])
         ? data[dataCells[j]]
         : "unknown";
 
       if (isBoolean(element)) {
-        element = formatBooleanValue({ value: element, language });
+        element = formatBooleanValue({ value: element, style });
       }
 
       if (isDate(element) && !isNumber(element)) {
-        element = formatDate({ isoDate: element, language });
+        element = formatDate({ isoDate: element, style });
       }
 
       if (isArray(element)) {
-        element = formatArray({ elementArray: element, language });
+        element = formatArray({ elementArray: element, style });
       }
 
       tableLineSyntax += `| ${element} `;

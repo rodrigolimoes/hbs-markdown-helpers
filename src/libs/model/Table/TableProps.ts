@@ -2,5 +2,5 @@ export interface TableProps {
   headers?: Array<string>;
   align?: "center" | "left" | "right";
   dataCells?: Array<string>;
-  language?: string;
+  style?: string;
 }

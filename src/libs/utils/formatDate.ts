@@ -1,15 +1,15 @@
 interface FormatDate {
   isoDate: string;
-  language: string;
+  style: string;
 }
 
-export const formatDate = ({ isoDate, language }: FormatDate): string => {
+export const formatDate = ({ isoDate, style }: FormatDate): string => {
   const date = new Date(isoDate);
   const day = date.getDate().toString().padStart(2, "0");
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const year = date.getFullYear();
 
-  switch (language) {
+  switch (style) {
     case "pt-br":
       return `${day}/${month}/${year}`;
     default:
