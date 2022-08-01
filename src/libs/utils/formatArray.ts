@@ -1,14 +1,14 @@
 interface FormatArray {
   elementArray: Array<unknown>;
-  language: string;
+  style: string;
 }
 
-export const formatArray = ({ elementArray, language }: FormatArray) => {
+export const formatArray = ({ elementArray, style }: FormatArray) => {
   let array = [...elementArray];
   let lastValue = array.pop();
   let connectionString;
 
-  switch (language) {
+  switch (style) {
     case "pt-br":
       connectionString = " e ";
       break;

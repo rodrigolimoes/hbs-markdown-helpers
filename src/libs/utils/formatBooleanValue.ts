@@ -1,10 +1,10 @@
 interface FormatBooleanValue {
   value: boolean;
-  language: string;
+  style: string;
 }
 
-export const formatBooleanValue = ({ value, language }: FormatBooleanValue) => {
-  switch (language) {
+export const formatBooleanValue = ({ value, style }: FormatBooleanValue) => {
+  switch (style) {
     case "pt-br":
       return value ? "Sim" : "Não";
     default:
