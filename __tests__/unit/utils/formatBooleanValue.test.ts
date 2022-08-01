@@ -7,4 +7,11 @@ describe("Utils Format Boolean Value", () => {
     expect(value).toBeDefined();
     expect(value).toEqual("Yes");
   });
+
+  it('Should return "No" when the value is false and the language is void', () => {
+    const value = formatBooleanValue({ value: false, language: "" });
+
+    expect(value).toBeDefined();
+    expect(value).toEqual("No");
+  });
 });
