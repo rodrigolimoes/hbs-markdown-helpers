@@ -10,4 +10,14 @@ describe("Utils Format Date", () => {
     expect(date).toBeDefined();
     expect(date).toEqual("1998-09-21");
   });
+
+  it('Should return a date with "dd/mm/yyyy" format when style is "pt-br"', () => {
+    const date = formatDate({
+      isoDate: "Sun Sep 21 1998 21:00:00 GMT-0300",
+      style: "pt-br",
+    });
+
+    expect(date).toBeDefined();
+    expect(date).toEqual("21/09/1998");
+  });
 });
