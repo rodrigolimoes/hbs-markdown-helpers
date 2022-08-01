@@ -14,4 +14,11 @@ describe("Utils Format Boolean Value", () => {
     expect(value).toBeDefined();
     expect(value).toEqual("No");
   });
+
+  it('Should return "Sim" when the value is true and language is "pt-br"', () => {
+    const value = formatBooleanValue({ value: true, language: "pt-br" });
+
+    expect(value).toBeDefined();
+    expect(value).toEqual("Sim");
+  });
 });
