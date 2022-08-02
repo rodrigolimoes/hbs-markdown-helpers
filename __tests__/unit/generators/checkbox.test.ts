@@ -1,4 +1,4 @@
-import CheckBox from "../../../src/libs/generators/checkbox/checkbox";
+import CheckBox from "../../../src/libs/generators/checkbox/Checkbox";
 
 describe("Checkbox", () => {
   it("Should return a checked checkbox", async () => {

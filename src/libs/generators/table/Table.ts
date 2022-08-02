@@ -1,6 +1,7 @@
 import { Data } from "../../model/Data/Data";
 import { TableProps } from "../../model/Table/TableProps";
 import { Alignment } from "../../common/tableAlignment.enum";
+import { TableConfig } from "../../model/Table/TableConfig";
 import { isDate, isBoolean, isNumber, isArray } from "../../utils/utilsType";
 import { formatDate } from "../../utils/formatDate";
 import { formatBooleanValue } from "../../utils/formatBooleanValue";
@@ -8,11 +9,13 @@ import { formatArray } from "../../utils/formatArray";
 
 export default class Table {
   private readonly data: Array<Data>;
+  private readonly config: TableConfig;
   private readonly props?: TableProps;
 
-  constructor(data: Array<Data>, props?: TableProps) {
+  constructor(data: Array<Data>, config: TableConfig, props?: TableProps) {
     this.data = data;
     this.props = props;
+    this.config = config;
   }
 
   /**
@@ -53,22 +56,27 @@ export default class Table {
    */
   private setDataCell = (dataCells: Array<string>, data: Data) => {
     let tableLineSyntax: string = "";
-    let style = this.props && this.props.style ? this.props.style : "";
     for (let j: number = 0; j < dataCells.length; j++) {
       let element = data.hasOwnProperty(dataCells[j])
         ? data[dataCells[j]]
         : "unknown";
 
       if (isBoolean(element)) {
-        element = formatBooleanValue({ value: element, style });
+        element = formatBooleanValue({
+          value: element,
+          customLabelBoolean: this.config.customLabelBoolean,
+        });
       }
 
       if (isDate(element) && !isNumber(element)) {
-        element = formatDate({ isoDate: element, style });
+        element = formatDate({
+          isoDate: element,
+          customFormatDate: this.config.customFormatDate,
+        });
       }
 
       if (isArray(element)) {
-        element = formatArray({ elementArray: element, style });
+        element = formatArray({ elementArray: element });
       }
 
       tableLineSyntax += `| ${element} `;

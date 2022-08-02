@@ -1,20 +1,10 @@
 interface FormatArray {
   elementArray: Array<unknown>;
-  style: string;
 }
 
-export const formatArray = ({ elementArray, style }: FormatArray) => {
+export const formatArray = ({ elementArray }: FormatArray) => {
   let array = [...elementArray];
   let lastValue = array.pop();
-  let connectionString;
 
-  switch (style) {
-    case "pt-br":
-      connectionString = " e ";
-      break;
-    default:
-      connectionString = ", and ";
-      break;
-  }
-  return `${array.join(", ")}${connectionString}${lastValue}`;
+  return `${array.join(", ")}, and ${lastValue}`;
 };
