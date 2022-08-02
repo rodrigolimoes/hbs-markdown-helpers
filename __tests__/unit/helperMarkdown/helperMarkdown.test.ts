@@ -1,4 +1,4 @@
-import { getHelpersMarkdown } from "../../../src";
+import { HbsMarkdownHelpers } from "../../../src";
 import * as handlebars from "handlebars";
 import { HelperDeclareSpec } from "handlebars";
 import * as fs from "fs";
@@ -45,7 +45,7 @@ describe("HelperMarkdown", () => {
   });
 
   it("Should be return the template without hbs sintax", async () => {
-    const helpers = getHelpersMarkdown();
+    const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
     handlebarsHelpers.setMarkdownHelper(helpers);
     const template = await handlebarsHelpers.compileTemplate();
 
@@ -54,7 +54,7 @@ describe("HelperMarkdown", () => {
   });
 
   it("Should be contain the return of HelperMarkdown", async () => {
-    const helpers = getHelpersMarkdown();
+    const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
     handlebarsHelpers.setMarkdownHelper(helpers);
     const template = await handlebarsHelpers.compileTemplate();
 
@@ -70,7 +70,7 @@ describe("HelperMarkdown", () => {
 
   describe("CheckList", () => {
     it("Should return a checklist if params is undefined", async () => {
-      const helpers = getHelpersMarkdown();
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
       handlebarsHelpers.setMarkdownHelper(helpers);
       const template = await handlebarsHelpers.compileTemplate();
 
@@ -81,7 +81,7 @@ describe("HelperMarkdown", () => {
     });
 
     it("Should return a checklist with label value equal to a value of the object property specified", async () => {
-      const helpers = getHelpersMarkdown();
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
       handlebarsHelpers.setMarkdownHelper(helpers);
       const template = await handlebarsHelpers.compileTemplate();
 
@@ -92,7 +92,7 @@ describe("HelperMarkdown", () => {
     });
 
     it("Should return a checklist with checked value equal to a value of the object property specified", async () => {
-      const helpers = getHelpersMarkdown();
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
       handlebarsHelpers.setMarkdownHelper(helpers);
       const template = await handlebarsHelpers.compileTemplate();
 
@@ -103,7 +103,7 @@ describe("HelperMarkdown", () => {
     });
 
     it("Should return a checklist with checked and label values equal to values of the object properties specified", async () => {
-      const helpers = getHelpersMarkdown();
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
       handlebarsHelpers.setMarkdownHelper(helpers);
       const template = await handlebarsHelpers.compileTemplate();
 
@@ -116,7 +116,7 @@ describe("HelperMarkdown", () => {
 
   describe("Checkbox", () => {
     it("Should return a checkbox with checked and label value equal to value of propLabel and propCheck", async () => {
-      const helpers = getHelpersMarkdown();
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
       handlebarsHelpers.setMarkdownHelper(helpers);
       const template = await handlebarsHelpers.compileTemplate();
 

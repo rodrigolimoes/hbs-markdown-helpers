@@ -1,4 +1,4 @@
-import CheckList from "../../../src/libs/generators/checklist/checkList";
+import CheckList from "../../../src/libs/generators/checklist/CheckList";
 import { todoList } from "../../data/data.json";
 
 describe("CheckList", () => {

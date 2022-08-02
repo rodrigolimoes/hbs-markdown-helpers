@@ -1,5 +1,5 @@
-import Table from "./table/table";
-import Checkbox from "./checkbox/checkbox";
-import CheckList from "./checklist/checkList";
+import Table from "./table/Table";
+import Checkbox from "./checkbox/Checkbox";
+import CheckList from "./checklist/CheckList";
 
 export { Table, Checkbox, CheckList };

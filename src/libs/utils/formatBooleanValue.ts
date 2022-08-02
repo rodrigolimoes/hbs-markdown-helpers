@@ -1,13 +1,13 @@
+import { CustomLabelBoolean } from "../model/HbsMarkdownHelper/HbsMarkdownHelper";
+
 interface FormatBooleanValue {
   value: boolean;
-  style: string;
+  customLabelBoolean: CustomLabelBoolean;
 }
 
-export const formatBooleanValue = ({ value, style }: FormatBooleanValue) => {
-  switch (style) {
-    case "pt-br":
-      return value ? "Sim" : "Não";
-    default:
-      return value ? "Yes" : "No";
-  }
+export const formatBooleanValue = ({
+  value,
+  customLabelBoolean,
+}: FormatBooleanValue) => {
+  return customLabelBoolean[value as unknown as keyof CustomLabelBoolean];
 };

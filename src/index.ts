@@ -1,3 +1,3 @@
-import { getHelpersMarkdown } from "./libs/helpers";
+import HbsMarkdownHelpers from "./libs/helpers";
 
-export { getHelpersMarkdown };
+export { HbsMarkdownHelpers };

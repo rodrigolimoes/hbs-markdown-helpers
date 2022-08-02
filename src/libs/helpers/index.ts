@@ -1,12 +1,21 @@
-import { tableHelper } from "./table/tableHelper";
-import { checkListHelper } from "./checkList/checkListHelper";
-import { checkboxHelper } from "./checkbox/checkboxHelper";
+import { TableHelper } from "./table/TableHelper";
+import { CheckListHelper } from "./checkList/CheckListHelper";
+import { CheckboxHelper } from "./checkbox/CheckboxHelper";
+import { HbsMarkdownHelpersConfig } from "../model/HbsMarkdownHelper/HbsMarkdownHelper";
 
-export const getHelpersMarkdown = () => {
-  return {
-    array: (values: string): Array<string> => values.split(","),
-    md_table: tableHelper,
-    md_checklist: checkListHelper,
-    md_checkbox: checkboxHelper,
+export default class HbsMarkdownHelpers {
+  private readonly config: HbsMarkdownHelpersConfig;
+
+  constructor(config: HbsMarkdownHelpersConfig) {
+    this.config = config;
+  }
+
+  getMarkdownHelper = () => {
+    return {
+      array: (values: string): Array<string> => values.split(","),
+      md_table: new TableHelper(this.config).getTableHelper,
+      md_checklist: new CheckListHelper().getChecklistHelper,
+      md_checkbox: new CheckboxHelper().getCheckboxhelper,
+    };
   };
-};
+}
