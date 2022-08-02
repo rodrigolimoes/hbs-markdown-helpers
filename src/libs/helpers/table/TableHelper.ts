@@ -12,7 +12,7 @@ export class TableHelper {
   }
 
   getTableHelper = (data: Array<Data>, options: { hash?: TableProps }) => {
-    const optionsTable = options?.hash;
+    const tableProps = options?.hash;
     const config: TableConfig = {
       customLabelBoolean: this.config.customLabelBoolean
         ? this.config.customLabelBoolean
@@ -22,7 +22,7 @@ export class TableHelper {
         : "yyyy-mm-dd",
     };
 
-    const table = new Table(data, config, optionsTable);
+    const table = new Table(data, config, tableProps);
     return table.generate();
   };
 }
