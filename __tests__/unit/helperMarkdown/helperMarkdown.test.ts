@@ -125,4 +125,15 @@ describe("HelperMarkdown", () => {
       expect(template).toContain("- [ ] Label\n");
     });
   });
+
+  describe("Link", () => {
+    it("Should return a markdown link", async () => {
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+      handlebarsHelpers.setMarkdownHelper(helpers);
+      const template = await handlebarsHelpers.compileTemplate();
+
+      expect(template).toBeDefined();
+      expect(template).toContain(`[Rodrigo](https://github.com/rodrigolimoes)`);
+    });
+  });
 });
