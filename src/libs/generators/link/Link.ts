@@ -10,22 +10,13 @@ export default class Link {
     return `[${text}]`;
   };
 
-  setParenthesesLink = ({
-    url,
-    tooltipContent,
-  }: {
-    url: string;
-    tooltipContent: string;
-  }) => {
-    return `(${url} "${tooltipContent}")`;
+  setUrlLink = (url: string) => {
+    return `(${url})`;
   };
 
   generate = () => {
-    const { url, textLink, tooltipContent } = this.props;
+    const { url, textLink } = this.props;
 
-    return `${this.setTextLink(textLink)}${this.setParenthesesLink({
-      url,
-      tooltipContent,
-    })}`;
+    return `${this.setTextLink(textLink)}${this.setUrlLink(url)}`;
   };
 }

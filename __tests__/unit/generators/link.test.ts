@@ -5,12 +5,9 @@ describe("Link", () => {
     const link = new Link({
       textLink: "Rodrigo",
       url: "https://github.com/rodrigolimoes",
-      tooltipContent: "Github Profile",
     }).generate();
 
     expect(link).toBeDefined();
-    expect(link).toContain(
-      `[Rodrigo](https://github.com/rodrigolimoes "Github Profile")`
-    );
+    expect(link).toContain(`[Rodrigo](https://github.com/rodrigolimoes)`);
   });
 });
