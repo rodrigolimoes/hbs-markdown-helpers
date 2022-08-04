@@ -1,9 +1,4 @@
-interface LinkProps {
-  url: string;
-  textLink: string;
-  tooltipContent: string;
-}
-
+import { LinkProps } from "../../model/Link/LinkProps";
 export default class Link {
   readonly props: LinkProps;
 
