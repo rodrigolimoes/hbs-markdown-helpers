@@ -1,7 +1,7 @@
 import { TableHelper } from "./table/TableHelper";
 import { CheckListHelper } from "./checkList/CheckListHelper";
 import { CheckboxHelper } from "./checkbox/CheckboxHelper";
-import { ImageHelper } from "./images/ImageHelper";
+import { ImageHelper } from "./image/ImageHelper";
 import { HbsMarkdownHelpersConfig } from "../model/HbsMarkdownHelper/HbsMarkdownHelper";
 import { LinkHelper } from "./Link/LinkHelper";
 
