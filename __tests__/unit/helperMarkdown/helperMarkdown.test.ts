@@ -136,4 +136,17 @@ describe("HelperMarkdown", () => {
       expect(template).toContain(`[Rodrigo](https://github.com/rodrigolimoes)`);
     });
   });
+
+  describe("Image", () => {
+    it("Should return an image when the image path and description are specified", async () => {
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+      handlebarsHelpers.setMarkdownHelper(helpers);
+      const template = await handlebarsHelpers.compileTemplate();
+
+      expect(template).toBeDefined();
+      expect(template).toContain(
+        `![Table Example of hbs-markdown-helpers library](../image/image_test.png)`
+      );
+    });
+  });
 });
