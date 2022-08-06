@@ -1,4 +1,4 @@
-import { isDate } from "../../../src/libs/utils/utilsType";
+import { isDate, isBoolean } from "../../../src/libs/utils/utilsType";
 
 describe("Utils Type", () => {
   describe("Utils Date", () => {
@@ -21,6 +21,15 @@ describe("Utils Type", () => {
 
       expect(isDateType).toBeDefined();
       expect(isDateType).toEqual(true);
+    });
+  });
+
+  describe("Utils Boolean", () => {
+    it("Should return true when the value is true", () => {
+      const isBooleanType = isBoolean(true);
+
+      expect(isBooleanType).toBeDefined();
+      expect(isBooleanType).toEqual(true);
     });
   });
 });
