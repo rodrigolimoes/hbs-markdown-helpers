@@ -15,5 +15,12 @@ describe("Utils Type", () => {
       expect(isDateType).toBeDefined();
       expect(isDateType).toEqual(true);
     });
+
+    it("Should return true when the value is a Date", () => {
+      const isDateType = isDate(new Date());
+
+      expect(isDateType).toBeDefined();
+      expect(isDateType).toEqual(true);
+    });
   });
 });
