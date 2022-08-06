@@ -59,5 +59,12 @@ describe("Utils Type", () => {
       expect(isBooleanType).toBeDefined();
       expect(isBooleanType).toEqual(false);
     });
+
+    it("Should return false when value is null", () => {
+      const isBooleanType = isBoolean(null);
+
+      expect(isBooleanType).toBeDefined();
+      expect(isBooleanType).toEqual(false);
+    });
   });
 });
