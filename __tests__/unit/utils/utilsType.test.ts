@@ -82,5 +82,12 @@ describe("Utils Type", () => {
       expect(isNumberType).toBeDefined();
       expect(isNumberType).toEqual(true);
     });
+
+    it("Should return false when value is a string", () => {
+      const isNumberType = isNumber("ghgdhs");
+
+      expect(isNumberType).toBeDefined();
+      expect(isNumberType).toEqual(false);
+    });
   });
 });
