@@ -110,5 +110,12 @@ describe("Utils Type", () => {
       expect(isNumberType).toBeDefined();
       expect(isNumberType).toEqual(false);
     });
+
+    it("Should return false when value is an object", () => {
+      const isNumberType = isNumber({ name: "Rodrigo", age: 23 });
+
+      expect(isNumberType).toBeDefined();
+      expect(isNumberType).toEqual(false);
+    });
   });
 });
