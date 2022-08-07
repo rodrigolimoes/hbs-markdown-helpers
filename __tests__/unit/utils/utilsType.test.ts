@@ -103,5 +103,12 @@ describe("Utils Type", () => {
       expect(isNumberType).toBeDefined();
       expect(isNumberType).toEqual(false);
     });
+
+    it("Should return false when value is an array", () => {
+      const isNumberType = isNumber([1, 2, 3]);
+
+      expect(isNumberType).toBeDefined();
+      expect(isNumberType).toEqual(false);
+    });
   });
 });
