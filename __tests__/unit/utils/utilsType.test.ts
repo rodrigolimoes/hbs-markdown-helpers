@@ -1,4 +1,4 @@
-import { isDate, isBoolean } from "../../../src/libs/utils/utilsType";
+import { isDate, isBoolean, isNumber } from "../../../src/libs/utils/utilsType";
 
 describe("Utils Type", () => {
   describe("Utils Date", () => {
@@ -72,6 +72,50 @@ describe("Utils Type", () => {
 
       expect(isBooleanType).toBeDefined();
       expect(isBooleanType).toEqual(false);
+    });
+  });
+
+  describe("Utils Number", () => {
+    it("Should return true when value is a number", () => {
+      const isNumberType = isNumber(12);
+
+      expect(isNumberType).toBeDefined();
+      expect(isNumberType).toEqual(true);
+    });
+
+    it("Should return false when value is a string", () => {
+      const isNumberType = isNumber("ghgdhs");
+
+      expect(isNumberType).toBeDefined();
+      expect(isNumberType).toEqual(false);
+    });
+
+    it("Should return false when value is undefined", () => {
+      const isNumberType = isNumber(undefined);
+
+      expect(isNumberType).toBeDefined();
+      expect(isNumberType).toEqual(false);
+    });
+
+    it("Should return false when value is null", () => {
+      const isNumberType = isNumber(null);
+
+      expect(isNumberType).toBeDefined();
+      expect(isNumberType).toEqual(false);
+    });
+
+    it("Should return false when value is an array", () => {
+      const isNumberType = isNumber([1, 2, 3]);
+
+      expect(isNumberType).toBeDefined();
+      expect(isNumberType).toEqual(false);
+    });
+
+    it("Should return false when value is an object", () => {
+      const isNumberType = isNumber({ name: "Rodrigo", age: 23 });
+
+      expect(isNumberType).toBeDefined();
+      expect(isNumberType).toEqual(false);
     });
   });
 });
