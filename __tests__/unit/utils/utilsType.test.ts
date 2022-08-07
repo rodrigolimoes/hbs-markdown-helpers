@@ -96,5 +96,12 @@ describe("Utils Type", () => {
       expect(isNumberType).toBeDefined();
       expect(isNumberType).toEqual(false);
     });
+
+    it("Should return false when value is null", () => {
+      const isNumberType = isNumber(null);
+
+      expect(isNumberType).toBeDefined();
+      expect(isNumberType).toEqual(false);
+    });
   });
 });
