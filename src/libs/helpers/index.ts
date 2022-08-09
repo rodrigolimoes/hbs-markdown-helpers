@@ -6,15 +6,15 @@ import { HbsMarkdownHelpersConfig } from "../model/HbsMarkdownHelper/HbsMarkdown
 import { LinkHelper } from "./Link/LinkHelper";
 
 export default class HbsMarkdownHelpers {
-  private readonly config: HbsMarkdownHelpersConfig;
+  private readonly config?: HbsMarkdownHelpersConfig;
 
-  constructor(config: HbsMarkdownHelpersConfig) {
+  constructor(config?: HbsMarkdownHelpersConfig) {
     this.config = config;
   }
 
   getMarkdownHelper = () => {
     return {
-      array: (values: string): Array<string> => values.split(","),
+      md_array: (values: string): Array<string> => values.split(","),
       md_link: new LinkHelper().getLinkHelper,
       md_table: new TableHelper(this.config).getTableHelper,
       md_checklist: new CheckListHelper().getChecklistHelper,

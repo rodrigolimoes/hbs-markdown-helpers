@@ -3,10 +3,9 @@ export interface CustomLabelBoolean {
   false: string;
 }
 
-export interface CustomFormatDate {
-  customFormatDate?: string;
-}
-
-export interface HbsMarkdownHelpersConfig extends CustomFormatDate {
-  customLabelBoolean?: CustomLabelBoolean;
+export interface HbsMarkdownHelpersConfig {
+  configTable?: {
+    customLabelBoolean?: CustomLabelBoolean;
+    customFormatDate?: string;
+  };
 }
