@@ -68,6 +68,22 @@ describe("HelperMarkdown", () => {
     );
   });
 
+  it("Should return an error message if format date is invalid", async () => {
+    try {
+      const helpers = new HbsMarkdownHelpers({
+        configTable: { customFormatDate: "yyyy-jh-09" },
+      }).getMarkdownHelper();
+      handlebarsHelpers.setMarkdownHelper(helpers);
+      await handlebarsHelpers.compileTemplate();
+    } catch (e) {
+      const { message } = e as Error;
+
+      expect(message).toEqual(
+        'Date format is invalid, you need to use "yyyy" for year, "mm" for month and "dd" for day'
+      );
+    }
+  });
+
   describe("CheckList", () => {
     it("Should return a checklist if params is undefined", async () => {
       const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
