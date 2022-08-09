@@ -68,6 +68,26 @@ describe("HelperMarkdown", () => {
     );
   });
 
+  it("Should return a table with custom format date and custom format boolean", async () => {
+    const helpers = new HbsMarkdownHelpers({
+      configTable: {
+        customFormatDate: "dd/mm/yyyy",
+        customLabelBoolean: { true: "Sim", false: "Não" },
+      },
+    }).getMarkdownHelper();
+    handlebarsHelpers.setMarkdownHelper(helpers);
+    const template = await handlebarsHelpers.compileTemplate();
+
+    expect(template).toBeDefined();
+    expect(template).toContain(
+      "| **NAME** | **LASTNAME** | **AGE** | **BIRTHDATA** | **ISMATRICULATE** | **SUBJECTS** | \n" +
+        " | :--- | :--- | :--- | :--- | :--- | :--- | \n" +
+        "| Rodrigo | Limões | 23 | 21/09/1998 | Sim | JavaScript, Reactjs, and Css | \n" +
+        "| João | Silva | 20 | 21/09/2000 | Sim | TypeScript, Nodejs, and Mongodb | \n" +
+        "| Julia | Silva | 24 | 21/09/1997 | Não | Reactjs, and TypeScript | \n"
+    );
+  });
+
   it("Should return an error message if format date is invalid", async () => {
     try {
       const helpers = new HbsMarkdownHelpers({
