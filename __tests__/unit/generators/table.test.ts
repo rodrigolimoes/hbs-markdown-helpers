@@ -145,7 +145,7 @@ describe("Markdown Table", () => {
     );
   });
 
-  it("", () => {
+  it("Should return a table with custom headers and property data values", () => {
     const table = new Table(
       data.students,
       {
