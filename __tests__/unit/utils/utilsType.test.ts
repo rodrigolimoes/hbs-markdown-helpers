@@ -131,5 +131,12 @@ describe("Utils Type", () => {
       expect(isArrayType).toBeDefined();
       expect(isArrayType).toEqual(true);
     });
+
+    it("Should return false when value is null", () => {
+      const isArrayType = isArray(null);
+
+      expect(isArrayType).toBeDefined();
+      expect(isArrayType).toEqual(false);
+    });
   });
 });
