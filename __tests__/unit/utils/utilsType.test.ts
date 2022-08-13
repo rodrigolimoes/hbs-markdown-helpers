@@ -152,5 +152,12 @@ describe("Utils Type", () => {
       expect(isArrayType).toBeDefined();
       expect(isArrayType).toEqual(false);
     });
+
+    it("Should return false when value is a number", () => {
+      const isArrayType = isArray(12);
+
+      expect(isArrayType).toBeDefined();
+      expect(isArrayType).toEqual(false);
+    });
   });
 });
