@@ -145,5 +145,12 @@ describe("Utils Type", () => {
       expect(isArrayType).toBeDefined();
       expect(isArrayType).toEqual(false);
     });
+
+    it("Should return false when value is an object", () => {
+      const isArrayType = isArray({ name: "rodrigo", age: 23 });
+
+      expect(isArrayType).toBeDefined();
+      expect(isArrayType).toEqual(false);
+    });
   });
 });
