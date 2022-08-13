@@ -1,4 +1,9 @@
-import { isDate, isBoolean, isNumber } from "../../../src/libs/utils/utilsType";
+import {
+  isDate,
+  isBoolean,
+  isNumber,
+  isArray,
+} from "../../../src/libs/utils/utilsType";
 
 describe("Utils Type", () => {
   describe("Utils Date", () => {
@@ -116,6 +121,15 @@ describe("Utils Type", () => {
 
       expect(isNumberType).toBeDefined();
       expect(isNumberType).toEqual(false);
+    });
+  });
+
+  describe("Utils Array", () => {
+    it("Should return true when value is an array", () => {
+      const isArrayType = isArray(["rodrigo"]);
+
+      expect(isArrayType).toBeDefined();
+      expect(isArrayType).toEqual(true);
     });
   });
 });
