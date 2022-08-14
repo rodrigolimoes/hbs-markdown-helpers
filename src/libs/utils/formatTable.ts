@@ -15,7 +15,10 @@ const getLongerLengthColumns = (
 };
 
 const getMatrixTable = (table: string): Array<Array<string>> =>
-  table.split("\n").map((e) => e.split("|").filter((e) => e !== ""));
+  table
+    .split("\n")
+    .map((e) => e.split("|").filter((e) => e !== ""))
+    .filter((e) => e.length > 0);
 
 const getAlignmentTable = (aling: string, lengthColumn: number): string =>
   aling.replace(/-/g, (match) => match.repeat(lengthColumn));
@@ -39,8 +42,7 @@ export const formatTable = (markdownTable: string): string => {
         }
       }
     }
-
-    table += row + "|\n";
+    table += `${row}|\n`;
   }
 
   return table;
