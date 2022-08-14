@@ -10,7 +10,8 @@ describe("Markdown Table", () => {
 
     expect(table).toBeDefined();
     expect(table).toContain(
-      "| **NAME** | **LASTNAME** | **AGE** | **BIRTHDATA** | **ISMATRICULATE** | **SUBJECTS** | \n | :--- | :--- | :--- | :--- | :--- | :--- | \n"
+      "| NAME    | LASTNAME | AGE | BIRTHDATA   | ISMATRICULATE | SUBJECTS                        |\n" +
+        "|:--------|:---------|:----|:------------|:--------------|:--------------------------------|"
     );
   });
 
@@ -29,7 +30,8 @@ describe("Markdown Table", () => {
 
     expect(table).toBeDefined();
     expect(table).toContain(
-      "| **Name** | **Age** | **Birth Data** | **Matriculate** | **Subjects** | \n | :--- | :--- | :--- | :--- | :--- | \n"
+      "| Name    | Age | Birth Data  | Matriculate | Subjects                        |\n" +
+        "|:--------|:----|:------------|:------------|:--------------------------------|\n"
     );
   });
 
@@ -89,7 +91,7 @@ describe("Markdown Table", () => {
 
     expect(table).toBeDefined();
     expect(table).toContain(
-      "\n | :----: | :----: | :----: | :----: | :----: | :----: | \n"
+      "|:-------:|:--------:|:---:|:-----------:|:-------------:|:-------------------------------:|\n"
     );
   });
 
@@ -107,7 +109,7 @@ describe("Markdown Table", () => {
 
     expect(table).toBeDefined();
     expect(table).toContain(
-      " \n | ---: | ---: | ---: | ---: | ---: | ---: | \n"
+      "|--------:|---------:|----:|------------:|--------------:|--------------------------------:|\n"
     );
   });
 
@@ -125,7 +127,7 @@ describe("Markdown Table", () => {
 
     expect(table).toBeDefined();
     expect(table).toContain(
-      "\n | :--- | :--- | :--- | :--- | :--- | :--- | \n"
+      "\n|:--------|:---------|:----|:------------|:--------------|:--------------------------------|\n"
     );
   });
 
@@ -137,11 +139,11 @@ describe("Markdown Table", () => {
 
     expect(table).toBeDefined();
     expect(table).toContain(
-      "| **NAME** | **LASTNAME** | **AGE** | **BIRTHDATA** | **ISMATRICULATE** | **SUBJECTS** | \n" +
-        " | :--- | :--- | :--- | :--- | :--- | :--- | \n" +
-        "| Rodrigo | Limões | 23 | 21/09/1998 | Sim | JavaScript, Reactjs, and Css | \n" +
-        "| João | Silva | 20 | 21/09/2000 | Sim | TypeScript, Nodejs, and Mongodb | \n" +
-        "| Julia | Silva | 24 | 21/09/1997 | Não | Reactjs, and TypeScript | \n"
+      "| NAME    | LASTNAME | AGE | BIRTHDATA  | ISMATRICULATE | SUBJECTS                        |\n" +
+        "|:--------|:---------|:----|:-----------|:--------------|:--------------------------------|\n" +
+        "| Rodrigo | Limões   | 23  | 21/09/1998 | Sim           | JavaScript, Reactjs, and Css    |\n" +
+        "| João    | Silva    | 20  | 21/09/2000 | Sim           | TypeScript, Nodejs, and Mongodb |\n" +
+        "| Julia   | Silva    | 24  | 21/09/1997 | Não           | Reactjs, and TypeScript         |\n"
     );
   });
 
@@ -160,11 +162,11 @@ describe("Markdown Table", () => {
 
     expect(table).toBeDefined();
     expect(table).toContain(
-      "| **Name** | **Birth Data** | **Matriculate** | \n" +
-        " | :--- | :--- | :--- | \n" +
-        "| Rodrigo | 21/09/1998 | Sim | \n" +
-        "| João | 21/09/2000 | Sim | \n" +
-        "| Julia | 21/09/1997 | Não | \n"
+      "| Name    | Birth Data | Matriculate |\n" +
+        "|:--------|:-----------|:------------|\n" +
+        "| Rodrigo | 21/09/1998 | Sim         |\n" +
+        "| João    | 21/09/2000 | Sim         |\n" +
+        "| Julia   | 21/09/1997 | Não         |\n"
     );
   });
 });
