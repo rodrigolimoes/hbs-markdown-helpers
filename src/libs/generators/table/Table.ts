@@ -6,6 +6,7 @@ import { isDate, isBoolean, isNumber, isArray } from "../../utils/utilsType";
 import { formatDate } from "../../utils/formatDate";
 import { formatBooleanValue } from "../../utils/formatBooleanValue";
 import { formatArray } from "../../utils/formatArray";
+import { formatTable } from "../../utils/formatTable";
 
 export default class Table {
   private readonly data: Array<Data>;
@@ -25,7 +26,7 @@ export default class Table {
    * @return string
    */
   private setMarkdownTableAlign = (align: string, qtdCollum: number) => {
-    return `| \n ${align.repeat(qtdCollum)}| \n`;
+    return `|\n${align.repeat(qtdCollum)}|\n`;
   };
 
   /**
@@ -40,7 +41,7 @@ export default class Table {
 
     for (let i: number = 0; i < headers.length; i++) {
       const element = headers[i];
-      tableHeaderSintax += `| **${element}** `;
+      tableHeaderSintax += `| ${element} `;
     }
 
     tableHeaderSintax += this.setMarkdownTableAlign(align, headers.length);
@@ -81,7 +82,7 @@ export default class Table {
 
       tableLineSyntax += `| ${element} `;
     }
-    tableLineSyntax += "| \n";
+    tableLineSyntax += "|\n";
 
     return tableLineSyntax;
   };
@@ -114,6 +115,6 @@ export default class Table {
       tableSintax += this.setDataCell(dataCells, data[i]);
     }
 
-    return tableSintax;
+    return formatTable(tableSintax);
   }
 }

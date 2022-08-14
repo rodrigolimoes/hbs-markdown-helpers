@@ -60,11 +60,11 @@ describe("HelperMarkdown", () => {
 
     expect(template).toBeDefined();
     expect(template).toContain(
-      "| **NAME** | **LASTNAME** | **AGE** | **BIRTHDATA** | **ISMATRICULATE** | **SUBJECTS** | \n" +
-        " | :--- | :--- | :--- | :--- | :--- | :--- | \n" +
-        "| Rodrigo | Limões | 23 | 1998-09-21 | Yes | JavaScript, Reactjs, and Css | \n" +
-        "| João | Silva | 20 | 2000-09-21 | Yes | TypeScript, Nodejs, and Mongodb | \n" +
-        "| Julia | Silva | 24 | 1997-09-21 | No | Reactjs, and TypeScript | \n"
+      "| NAME    | LASTNAME | AGE | BIRTHDATA  | ISMATRICULATE | SUBJECTS                        |\n" +
+        "|:--------|:---------|:----|:-----------|:--------------|:--------------------------------|\n" +
+        "| Rodrigo | Limões   | 23  | 1998-09-21 | Yes           | JavaScript, Reactjs, and Css    |\n" +
+        "| João    | Silva    | 20  | 2000-09-21 | Yes           | TypeScript, Nodejs, and Mongodb |\n" +
+        "| Julia   | Silva    | 24  | 1997-09-21 | No            | Reactjs, and TypeScript         |\n"
     );
   });
 
@@ -80,11 +80,11 @@ describe("HelperMarkdown", () => {
 
     expect(template).toBeDefined();
     expect(template).toContain(
-      "| **NAME** | **LASTNAME** | **AGE** | **BIRTHDATA** | **ISMATRICULATE** | **SUBJECTS** | \n" +
-        " | :--- | :--- | :--- | :--- | :--- | :--- | \n" +
-        "| Rodrigo | Limões | 23 | 21/09/1998 | Sim | JavaScript, Reactjs, and Css | \n" +
-        "| João | Silva | 20 | 21/09/2000 | Sim | TypeScript, Nodejs, and Mongodb | \n" +
-        "| Julia | Silva | 24 | 21/09/1997 | Não | Reactjs, and TypeScript | \n"
+      "| NAME    | LASTNAME | AGE | BIRTHDATA  | ISMATRICULATE | SUBJECTS                        |\n" +
+        "|:--------|:---------|:----|:-----------|:--------------|:--------------------------------|\n" +
+        "| Rodrigo | Limões   | 23  | 21/09/1998 | Sim           | JavaScript, Reactjs, and Css    |\n" +
+        "| João    | Silva    | 20  | 21/09/2000 | Sim           | TypeScript, Nodejs, and Mongodb |\n" +
+        "| Julia   | Silva    | 24  | 21/09/1997 | Não           | Reactjs, and TypeScript         |\n"
     );
   });
 
