@@ -3,12 +3,13 @@ hbs-markdown-helpers provides some markdown helpers for use in the handlebars te
 
 ## Installing
 ~~~~
-
+npm i hbs-markdown-helpers
 ~~~~
 
 ## Usage Exemple
 ~~~~typescript
 import * as handlebars from "handlebars";
+import {HbsMarkdownHelpers} from 'hbs-markdown-helpers';
 
 // Firstly you must create a new instance of HbsMarkdownHelpers
 const markdownHelper = new HbsMarkdownHelpers({
