@@ -3,12 +3,13 @@ hbs-markdown-helpers provides some markdown helpers for use in the handlebars te
 
 ## Installing
 ~~~~
-
+npm i hbs-markdown-helpers
 ~~~~
 
 ## Usage Exemple
 ~~~~typescript
 import * as handlebars from "handlebars";
+import {HbsMarkdownHelpers} from 'hbs-markdown-helpers';
 
 // Firstly you must create a new instance of HbsMarkdownHelpers
 const markdownHelper = new HbsMarkdownHelpers({
@@ -37,8 +38,21 @@ handlebars.registerHelper(helpers);
 ~~~~
 ### Params
 - config?: `Config`
+
+_________________
 ## Helpers
 
+### {{md_array}}
+Return an array
+#### Params
+- data: `string`
+  > Comma separated element
+#### Usage Exemple
+~~~~handlebars
+<!--Comma separated element-->
+{{md_array "Name,Age"}}
+~~~~
+_________________
 ### {{md_table}}
 Return a table.
 #### Params
@@ -50,9 +64,9 @@ Return a table.
 - align?: `center | left | right`
   > Table alignment. defaul: left
 
-##### Exemple Usage
+##### Usage Exemple
 
-###### Template: 
+##### Template: 
 ~~~~handlebars
 <!-- data: [{
       "name": "Rodrigo",
@@ -96,7 +110,7 @@ Return a table.
 
 ~~~~
 
-###### Output: 
+##### Output: 
 
 **Without Params:**
 
@@ -113,3 +127,138 @@ Return a table.
 | Rodrigo  |   23    |
 |   João   |   20    |
 |  Julia   |   24    |
+
+_________________
+### {{md_checklist}}
+Return a checkList
+
+#### Params
+- data: `Array<object>`
+- propLabel?: `string`
+  > Name property from object
+- propChecked?: `string`
+  > Name property from object
+
+#### Usage Exemple
+~~~~handlebars
+<!-- data: [{
+      "checked": true,
+      "otherChecked": false,
+      "label": "Text Label 1",
+      "label2": "Text Label 2"
+    },
+    {
+      "checked": false,
+      "otherChecked": true,
+      "label": "Text Label 1",
+      "label2": "Text Label 2"
+    },
+    {
+      "checked": true,
+      "otherChecked": false,
+      "label": "Text Label 1",
+      "label2": "Text Label 2"
+    }] -->
+
+<!-- 
+    this - data
+    propLabel - Name property from object
+    propChecked - Name property from object
+ -->
+**CheckList with params**
+<!-- Return a checklist with value of propChecked and propLabel -->
+{{md_checklist this propLabel="label2" propChecked="checked"}}
+_________________
+<!-- Return a checklist with value of propChecked -->
+{{md_checklist this propChecked="otherChecked"}}
+_________________
+<!-- Return a checklist with value of propLabel -->
+{{md_checklist this propLabel="label2"}}
+
+**CheckList without params**
+<!-- Return a checklist with first boolean value and first string value -->
+{{md_checklist this.todoList}}
+~~~~
+
+#### output:
+
+**CheckList with params**
+- [X] Text Label 2
+- [ ] Text Label 2
+- [X] Text Label 2
+
+_________________
+- [ ] Text Label 1
+- [X] Text Label 1
+- [ ] Text Label 1
+
+_________________
+- [X] Text Label 2
+- [ ] Text Label 2
+- [X] Text Label 2
+
+
+**CheckList without params**
+- [X] Text Label 1
+- [ ] Text Label 1
+- [X] Text Label 1
+
+_________________
+### {{md_checkbox}}
+Return a checkbox
+
+#### Params
+- checked: `boolean`
+- label: `string`
+
+#### Usage Exemple
+~~~~handlebars
+**Checkbox**
+{{md_checkbox checked=true label="Label"}}
+{{md_checkbox checked=false label="Label"}}
+~~~~
+
+#### output:
+
+**Checkbox**
+- [X] Label
+- [ ] Label
+_________________
+### {{md_link}}
+Return a markdown Link
+
+#### Params
+- textLink: `string`
+- url: `string`
+
+#### Usage Exemple
+~~~~handlebars
+**Link**
+{{md_link textLink="Rodrigo" url="https://github.com/rodrigolimoes"}}
+~~~~
+
+#### output:
+
+**Link**
+
+[Rodrigo](https://github.com/rodrigolimoes)
+_________________
+### {{md_image}}
+Return a markdown Image
+
+#### Params
+- path: `string`
+- description: `string`
+
+#### Usage Exemple
+~~~~handlebars
+**Image**
+
+{{md_image path="./__tests__/data/image/image_test.png" description="Table Example of hbs-markdown-helpers library"}}
+~~~~
+
+#### output:
+
+**Image**
+
+![Table Example of hbs-markdown-helpers library](./__tests__/data/image/image_test.png)
