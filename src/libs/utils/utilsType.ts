@@ -10,5 +10,5 @@ export const isNumber = (value: unknown): boolean => typeof value === "number";
 
 export const isArray = (value: unknown): boolean => Array.isArray(value);
 
-export const IsObjectArray = (value: Array<unknown>): boolean =>
+export const IsObjectArray = (value: Array<unknown> | unknown): boolean =>
   Array.isArray(value) && value.every((e) => typeof e === "object");
