@@ -192,5 +192,12 @@ describe("Utils Type", () => {
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
     });
+
+    it("Should return false when value is a undefined array", () => {
+      const isObjectArrayType = IsObjectArray([undefined]);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
   });
 });
