@@ -178,5 +178,12 @@ describe("Utils Type", () => {
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(true);
     });
+
+    it("Should return false when value is a number array", () => {
+      const isObjectArrayType = IsObjectArray([2, 3]);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
   });
 });
