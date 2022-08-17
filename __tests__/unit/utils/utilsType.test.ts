@@ -3,6 +3,7 @@ import {
   isBoolean,
   isNumber,
   isArray,
+  IsObjectArray,
 } from "../../../src/libs/utils/utilsType";
 
 describe("Utils Type", () => {
@@ -165,6 +166,17 @@ describe("Utils Type", () => {
 
       expect(isArrayType).toBeDefined();
       expect(isArrayType).toEqual(false);
+    });
+  });
+
+  describe("Util isObjectArray", () => {
+    it("Should return true when value is an object array", () => {
+      const isObjectArrayType = IsObjectArray([
+        { name: "Rodrigo", lastname: "Limões" },
+      ]);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(true);
     });
   });
 });
