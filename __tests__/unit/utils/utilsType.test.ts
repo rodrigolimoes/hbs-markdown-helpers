@@ -227,5 +227,12 @@ describe("Utils Type", () => {
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
     });
+
+    it("Should return false when value is a boolean", () => {
+      const isObjectArrayType = IsObjectArray(true);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
   });
 });
