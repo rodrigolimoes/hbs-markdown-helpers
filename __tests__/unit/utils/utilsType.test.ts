@@ -3,7 +3,7 @@ import {
   isBoolean,
   isNumber,
   isArray,
-  IsObjectArray,
+  isObjectArray,
 } from "../../../src/libs/utils/utilsType";
 
 describe("Utils Type", () => {
@@ -171,7 +171,7 @@ describe("Utils Type", () => {
 
   describe("Util isObjectArray", () => {
     it("Should return true when value is an object array", () => {
-      const isObjectArrayType = IsObjectArray([
+      const isObjectArrayType = isObjectArray([
         { name: "Rodrigo", lastname: "Limões" },
       ]);
 
@@ -180,56 +180,56 @@ describe("Utils Type", () => {
     });
 
     it("Should return false when value is a number array", () => {
-      const isObjectArrayType = IsObjectArray([2, 3]);
+      const isObjectArrayType = isObjectArray([2, 3]);
 
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
     });
 
     it("Should return false when value is a string array", () => {
-      const isObjectArrayType = IsObjectArray(["Rodrigo"]);
+      const isObjectArrayType = isObjectArray(["Rodrigo"]);
 
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
     });
 
     it("Should return false when value is a undefined array", () => {
-      const isObjectArrayType = IsObjectArray([undefined]);
+      const isObjectArrayType = isObjectArray([undefined]);
 
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
     });
 
     it("Should return false when value is a number", () => {
-      const isObjectArrayType = IsObjectArray(12);
+      const isObjectArrayType = isObjectArray(12);
 
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
     });
 
     it("Should return false when value is a string", () => {
-      const isObjectArrayType = IsObjectArray("rodrigo");
+      const isObjectArrayType = isObjectArray("rodrigo");
 
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
     });
 
     it("Should return false when value is null", () => {
-      const isObjectArrayType = IsObjectArray(null);
+      const isObjectArrayType = isObjectArray(null);
 
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
     });
 
     it("Should return false when value is Object", () => {
-      const isObjectArrayType = IsObjectArray({ name: "Rodrigo", age: 23 });
+      const isObjectArrayType = isObjectArray({ name: "Rodrigo", age: 23 });
 
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
     });
 
     it("Should return false when value is a boolean", () => {
-      const isObjectArrayType = IsObjectArray(true);
+      const isObjectArrayType = isObjectArray(true);
 
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
