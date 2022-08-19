@@ -3,6 +3,7 @@ import { TableProps } from "../../model/Table/TableProps";
 import { Table } from "../../generators";
 import { TableConfig } from "../../model/Table/TableConfig";
 import { HbsMarkdownHelpersConfig } from "../../model/HbsMarkdownHelper/HbsMarkdownHelper";
+import { isObjectArray } from "../../utils/utilsType";
 
 export class TableHelper {
   private readonly config?: HbsMarkdownHelpersConfig;
@@ -13,6 +14,10 @@ export class TableHelper {
 
   getTableHelper = (data: Array<Data>, options: { hash?: TableProps }) => {
     const tableProps = options?.hash;
+
+    if (!isObjectArray(data))
+      throw new Error("Data is not an array of objects");
+
     let config: TableConfig = {
       customLabelBoolean: { true: "Yes", false: "No" },
       customFormatDate: "yyyy-mm-dd",

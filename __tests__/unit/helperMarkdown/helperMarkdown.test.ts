@@ -44,6 +44,23 @@ describe("HelperMarkdown", () => {
     handlebarsHelpers = new HandlebarsHelpers(data, hbsTemplate);
   });
 
+  it("Should return a message error if data is not an array of objects", async () => {
+    try {
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+      const handlebarsHelper = new HandlebarsHelpers(
+        data.dataOfTableWrong,
+        "{{md_table this}}"
+      );
+      handlebarsHelper.setMarkdownHelper(helpers);
+      await handlebarsHelper.compileTemplate();
+    } catch (e) {
+      const { message } = e as Error;
+
+      expect(message).toBeDefined();
+      expect(message).toEqual("Data is not an array of objects");
+    }
+  });
+
   it("Should be return the template without hbs sintax", async () => {
     const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
     handlebarsHelpers.setMarkdownHelper(helpers);
