@@ -279,5 +279,12 @@ describe("Utils Type", () => {
       expect(isStringType).toBeDefined();
       expect(isStringType).toEqual(false);
     });
+
+    it("Should return false when value is an array", () => {
+      const isStringType = isString(["rodrigo"]);
+
+      expect(isStringType).toBeDefined();
+      expect(isStringType).toEqual(false);
+    });
   });
 });
