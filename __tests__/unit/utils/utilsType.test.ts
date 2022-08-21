@@ -4,7 +4,8 @@ import {
   isNumber,
   isArray,
   isObjectArray,
-} from "../../../src/libs/utils/utilsType";
+  isString,
+} from "../../../src/libs/utils";
 
 describe("Utils Type", () => {
   describe("Utils Date", () => {
@@ -233,6 +234,15 @@ describe("Utils Type", () => {
 
       expect(isObjectArrayType).toBeDefined();
       expect(isObjectArrayType).toEqual(false);
+    });
+  });
+
+  describe("Utils String", () => {
+    it("Should return true when value is a string", () => {
+      const isStringType = isString("rodrigo");
+
+      expect(isStringType).toBeDefined();
+      expect(isStringType).toEqual(true);
     });
   });
 });
