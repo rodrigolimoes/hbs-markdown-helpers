@@ -244,5 +244,12 @@ describe("Utils Type", () => {
       expect(isStringType).toBeDefined();
       expect(isStringType).toEqual(true);
     });
+
+    it("Should return false when value is a number", () => {
+      const isStringType = isString(12);
+
+      expect(isStringType).toBeDefined();
+      expect(isStringType).toEqual(false);
+    });
   });
 });
