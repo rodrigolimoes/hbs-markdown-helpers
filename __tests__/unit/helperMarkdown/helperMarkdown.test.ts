@@ -270,4 +270,17 @@ describe("HelperMarkdown", () => {
       );
     });
   });
+
+  describe("Image Link", () => {
+    it("Should return an image link when image path, description, and url are specified", async () => {
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+      handlebarsHelpers.setMarkdownHelper(helpers);
+      const template = await handlebarsHelpers.compileTemplate();
+
+      expect(template).toBeDefined();
+      expect(template).toContain(
+        `[![Table Exemple of hbs-markdown-helpers](../image/image_test.png)](https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png)`
+      );
+    });
+  });
 });
