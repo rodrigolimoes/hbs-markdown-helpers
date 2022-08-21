@@ -194,6 +194,23 @@ describe("HelperMarkdown", () => {
       expect(template).toContain("- [X] Label\n");
       expect(template).toContain("- [ ] Label\n");
     });
+
+    it("Should return a message error if Label is undefined", async () => {
+      try {
+        const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+        const handlebarsHelper = new HandlebarsHelpers(
+          data.dataOfTableWrong,
+          "{{md_checkbox checked=true}}"
+        );
+        handlebarsHelper.setMarkdownHelper(helpers);
+        await handlebarsHelper.compileTemplate();
+      } catch (e) {
+        const { message } = e as Error;
+
+        expect(message).toBeDefined();
+        expect(message).toEqual("Label or Checked cannot be undefined");
+      }
+    });
   });
 
   describe("Link", () => {
