@@ -3,7 +3,7 @@ import { TableProps } from "../../model/Table/TableProps";
 import { Table } from "../../generators";
 import { TableConfig } from "../../model/Table/TableConfig";
 import { HbsMarkdownHelpersConfig } from "../../model/HbsMarkdownHelper/HbsMarkdownHelper";
-import { isObjectArray } from "../../utils/utilsType";
+import { isObjectArray } from "../../utils";
 
 export class TableHelper {
   private readonly config?: HbsMarkdownHelpersConfig;

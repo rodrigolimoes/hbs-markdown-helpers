@@ -1,16 +1,26 @@
 import { Data } from "../../model/Data/Data";
 import { ChecklistParams } from "../../model/Checklist/ChecklistParams";
 import { CheckList } from "../../generators";
+import { ChecklistProp } from "../../model/Checklist/ChecklistProp";
+import { isObjectArray } from "../../utils";
+
+interface CheckListHelperParams {
+  hash?: ChecklistParams;
+}
 
 export class CheckListHelper {
-  getChecklistHelper = (
-    data: Array<Data>,
-    options: { hash?: ChecklistParams }
-  ) => {
+  /**
+   * This function checks if params was specified, if specified returns a custom props, otherwise returns a default props.
+   * @param params
+   * @return ChecklistProp | undefined
+   */
+  getCheckListProps = (
+    params: CheckListHelperParams
+  ): ChecklistProp | undefined => {
     let customProps;
 
-    if (options && options.hash) {
-      const { hash } = options;
+    if (params && params.hash) {
+      const { hash } = params;
       const { propChecked, propLabel } = hash;
 
       if (propLabel || propChecked) {
@@ -23,7 +33,24 @@ export class CheckListHelper {
       }
     }
 
-    const checkboxList = new CheckList(data, customProps);
-    return checkboxList.generate();
+    return customProps;
+  };
+
+  /**
+   * This function gets the template parameters and returns a Markdown checklist.
+   * @param data
+   * @param options
+   * @return string
+   */
+  getChecklistHelper = (
+    data: Array<Data>,
+    options: CheckListHelperParams
+  ): string => {
+    if (!isObjectArray(data))
+      throw new Error("Data is not an array of objects");
+
+    const props = this.getCheckListProps(options);
+
+    return new CheckList(data, props).generate();
   };
 }
