@@ -44,5 +44,9 @@
       "label": "Text Label 1",
       "label2": "Text Label 2"
     }
+  ],
+  "dataOfTableWrong": [
+    "Rodrigo",
+    "limoes"
   ]
 }

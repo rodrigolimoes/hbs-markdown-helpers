@@ -262,3 +262,24 @@ Return a markdown Image
 **Image**
 
 ![Table Example of hbs-markdown-helpers library](./__tests__/data/image/image_test.png)
+
+_________________
+### {{md_image_link}}
+Return a markdown Image Link
+
+#### Params
+- path: `string`
+- description: `string`
+- url: `string`
+
+#### Usage Exemple
+~~~~handlebars
+**Image Link**
+{{md_image_link path="./__tests__/data/image/image_test.png" description="Table Exemple of hbs-markdown-helpers" url="https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png"}}
+~~~~
+
+#### output:
+
+**Image Link**
+
+[![Table Exemple of hbs-markdown-helpers](./__tests__/data/image/image_test.png)](https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png)

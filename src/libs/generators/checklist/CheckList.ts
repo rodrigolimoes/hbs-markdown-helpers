@@ -1,5 +1,6 @@
 import { Data } from "../../model/Data/Data";
 import { ChecklistProp } from "../../model/Checklist/ChecklistProp";
+import { isBoolean, isString } from "../../utils";
 import Checkbox from "../checkbox/Checkbox";
 
 export default class CheckList {
@@ -10,14 +11,6 @@ export default class CheckList {
     this.data = data;
     this.prop = prop;
   }
-
-  isBoolean = (value: any) => {
-    return typeof value === "boolean";
-  };
-
-  isString = (value: any) => {
-    return typeof value === "string";
-  };
 
   generate() {
     const { data, prop } = this;
@@ -36,24 +29,24 @@ export default class CheckList {
         let controllerPropChecked = false;
         for (const key in element) {
           if (!prop) {
-            if (this.isString(element[key]) && defaultLabel === "") {
+            if (isString(element[key]) && defaultLabel === "") {
               defaultLabel = element[key];
             }
 
-            if (this.isBoolean(element[key]) && !controllerPropChecked) {
+            if (isBoolean(element[key]) && !controllerPropChecked) {
               defaultChecked = element[key];
               controllerPropChecked = true;
             }
           }
 
           if (prop && (!prop.label || !prop.checked)) {
-            if (!prop.checked && this.isBoolean(element[key])) {
+            if (!prop.checked && isBoolean(element[key])) {
               defaultChecked = element[key];
               defaultLabel = prop.label ? element[prop.label] : "";
               break;
             }
 
-            if (!prop.label && this.isString(element[key])) {
+            if (!prop.label && isString(element[key])) {
               defaultLabel = element[key];
               defaultChecked = prop.checked ? element[prop.checked] : false;
               break;

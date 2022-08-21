@@ -10,7 +10,7 @@ export class CheckboxHelper {
         const { checked, label } = hash;
 
         if (!label || checked === undefined)
-          throw new Error("propLabel or propChecked cannot be undefined");
+          throw new Error("Label or Checked cannot be undefined");
 
         return new Checkbox({
           checked: checked,

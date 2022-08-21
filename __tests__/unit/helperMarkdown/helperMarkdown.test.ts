@@ -44,6 +44,23 @@ describe("HelperMarkdown", () => {
     handlebarsHelpers = new HandlebarsHelpers(data, hbsTemplate);
   });
 
+  it("Should return a message error if data is not an array of objects", async () => {
+    try {
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+      const handlebarsHelper = new HandlebarsHelpers(
+        data.dataOfTableWrong,
+        "{{md_table this}}"
+      );
+      handlebarsHelper.setMarkdownHelper(helpers);
+      await handlebarsHelper.compileTemplate();
+    } catch (e) {
+      const { message } = e as Error;
+
+      expect(message).toBeDefined();
+      expect(message).toEqual("Data is not an array of objects");
+    }
+  });
+
   it("Should be return the template without hbs sintax", async () => {
     const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
     handlebarsHelpers.setMarkdownHelper(helpers);
@@ -105,6 +122,23 @@ describe("HelperMarkdown", () => {
   });
 
   describe("CheckList", () => {
+    it("Should return a message error if data is not an array of objects", async () => {
+      try {
+        const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+        const handlebarsHelper = new HandlebarsHelpers(
+          data.dataOfTableWrong,
+          "{{md_checklist this}}"
+        );
+        handlebarsHelper.setMarkdownHelper(helpers);
+        await handlebarsHelper.compileTemplate();
+      } catch (e) {
+        const { message } = e as Error;
+
+        expect(message).toBeDefined();
+        expect(message).toEqual("Data is not an array of objects");
+      }
+    });
+
     it("Should return a checklist if params is undefined", async () => {
       const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
       handlebarsHelpers.setMarkdownHelper(helpers);
@@ -160,6 +194,57 @@ describe("HelperMarkdown", () => {
       expect(template).toContain("- [X] Label\n");
       expect(template).toContain("- [ ] Label\n");
     });
+
+    it("Should return a message error if Label is undefined", async () => {
+      try {
+        const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+        const handlebarsHelper = new HandlebarsHelpers(
+          data.dataOfTableWrong,
+          "{{md_checkbox checked=true}}"
+        );
+        handlebarsHelper.setMarkdownHelper(helpers);
+        await handlebarsHelper.compileTemplate();
+      } catch (e) {
+        const { message } = e as Error;
+
+        expect(message).toBeDefined();
+        expect(message).toEqual("Label or Checked cannot be undefined");
+      }
+    });
+
+    it("Should return a message error if Checked is undefined", async () => {
+      try {
+        const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+        const handlebarsHelper = new HandlebarsHelpers(
+          data.dataOfTableWrong,
+          "{{md_checkbox label='Label'}}"
+        );
+        handlebarsHelper.setMarkdownHelper(helpers);
+        await handlebarsHelper.compileTemplate();
+      } catch (e) {
+        const { message } = e as Error;
+
+        expect(message).toBeDefined();
+        expect(message).toEqual("Label or Checked cannot be undefined");
+      }
+    });
+
+    it("Should return a message error if Checked and Label are undefined", async () => {
+      try {
+        const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+        const handlebarsHelper = new HandlebarsHelpers(
+          data.dataOfTableWrong,
+          "{{md_checkbox}}"
+        );
+        handlebarsHelper.setMarkdownHelper(helpers);
+        await handlebarsHelper.compileTemplate();
+      } catch (e) {
+        const { message } = e as Error;
+
+        expect(message).toBeDefined();
+        expect(message).toEqual("Label or Checked cannot be undefined");
+      }
+    });
   });
 
   describe("Link", () => {
@@ -182,6 +267,64 @@ describe("HelperMarkdown", () => {
       expect(template).toBeDefined();
       expect(template).toContain(
         `![Table Example of hbs-markdown-helpers library](../image/image_test.png)`
+      );
+    });
+  });
+
+  describe("Image Link", () => {
+    it("Should return an image link when image path, description, and url are specified", async () => {
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+      handlebarsHelpers.setMarkdownHelper(helpers);
+      const template = await handlebarsHelpers.compileTemplate();
+
+      expect(template).toBeDefined();
+      expect(template).toContain(
+        `[![Table Exemple of hbs-markdown-helpers](../image/image_test.png)](https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png)`
+      );
+    });
+
+    it("Should return an image link with path equal void if not specified in params", async () => {
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+      const handlebarsHelper = new HandlebarsHelpers(
+        data.dataOfTableWrong,
+        `{{md_image_link description="Table Exemple of hbs-markdown-helpers" url="https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png"}}`
+      );
+      handlebarsHelper.setMarkdownHelper(helpers);
+      const template = await handlebarsHelper.compileTemplate();
+
+      expect(template).toBeDefined();
+      expect(template).toContain(
+        `[![Table Exemple of hbs-markdown-helpers]()](https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png)`
+      );
+    });
+
+    it("Should return an image link with description equal unknown if not specified in params", async () => {
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+      const handlebarsHelper = new HandlebarsHelpers(
+        data.dataOfTableWrong,
+        `{{md_image_link path="../image/image_test.png" url="https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png"}}`
+      );
+      handlebarsHelper.setMarkdownHelper(helpers);
+      const template = await handlebarsHelper.compileTemplate();
+
+      expect(template).toBeDefined();
+      expect(template).toContain(
+        `[![unknown](../image/image_test.png)](https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png)`
+      );
+    });
+
+    it("Should return an image link with url equal void if not specified in params", async () => {
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+      const handlebarsHelper = new HandlebarsHelpers(
+        data.dataOfTableWrong,
+        `{{md_image_link path="../image/image_test.png" description="Table Exemple of hbs-markdown-helpers"}}`
+      );
+      handlebarsHelper.setMarkdownHelper(helpers);
+      const template = await handlebarsHelper.compileTemplate();
+
+      expect(template).toBeDefined();
+      expect(template).toContain(
+        `[![Table Exemple of hbs-markdown-helpers](../image/image_test.png)]()`
       );
     });
   });

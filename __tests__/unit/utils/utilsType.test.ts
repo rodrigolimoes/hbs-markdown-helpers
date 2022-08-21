@@ -3,7 +3,9 @@ import {
   isBoolean,
   isNumber,
   isArray,
-} from "../../../src/libs/utils/utilsType";
+  isObjectArray,
+  isString,
+} from "../../../src/libs/utils";
 
 describe("Utils Type", () => {
   describe("Utils Date", () => {
@@ -165,6 +167,124 @@ describe("Utils Type", () => {
 
       expect(isArrayType).toBeDefined();
       expect(isArrayType).toEqual(false);
+    });
+  });
+
+  describe("Util isObjectArray", () => {
+    it("Should return true when value is an object array", () => {
+      const isObjectArrayType = isObjectArray([
+        { name: "Rodrigo", lastname: "Limões" },
+      ]);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(true);
+    });
+
+    it("Should return false when value is a number array", () => {
+      const isObjectArrayType = isObjectArray([2, 3]);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
+
+    it("Should return false when value is a string array", () => {
+      const isObjectArrayType = isObjectArray(["Rodrigo"]);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
+
+    it("Should return false when value is a undefined array", () => {
+      const isObjectArrayType = isObjectArray([undefined]);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
+
+    it("Should return false when value is a number", () => {
+      const isObjectArrayType = isObjectArray(12);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
+
+    it("Should return false when value is a string", () => {
+      const isObjectArrayType = isObjectArray("rodrigo");
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
+
+    it("Should return false when value is null", () => {
+      const isObjectArrayType = isObjectArray(null);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
+
+    it("Should return false when value is Object", () => {
+      const isObjectArrayType = isObjectArray({ name: "Rodrigo", age: 23 });
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
+
+    it("Should return false when value is a boolean", () => {
+      const isObjectArrayType = isObjectArray(true);
+
+      expect(isObjectArrayType).toBeDefined();
+      expect(isObjectArrayType).toEqual(false);
+    });
+  });
+
+  describe("Utils String", () => {
+    it("Should return true when value is a string", () => {
+      const isStringType = isString("rodrigo");
+
+      expect(isStringType).toBeDefined();
+      expect(isStringType).toEqual(true);
+    });
+
+    it("Should return false when value is a number", () => {
+      const isStringType = isString(12);
+
+      expect(isStringType).toBeDefined();
+      expect(isStringType).toEqual(false);
+    });
+
+    it("Should return false when value is boolean", () => {
+      const isStringType = isString(true);
+
+      expect(isStringType).toBeDefined();
+      expect(isStringType).toEqual(false);
+    });
+
+    it("Should return false when value is undefined", () => {
+      const isStringType = isString(undefined);
+
+      expect(isStringType).toBeDefined();
+      expect(isStringType).toEqual(false);
+    });
+
+    it("Should return false when value is null", () => {
+      const isStringType = isString(null);
+
+      expect(isStringType).toBeDefined();
+      expect(isStringType).toEqual(false);
+    });
+
+    it("Should return false when value is an object", () => {
+      const isStringType = isString({ name: "rodrigo", age: "23" });
+
+      expect(isStringType).toBeDefined();
+      expect(isStringType).toEqual(false);
+    });
+
+    it("Should return false when value is an array", () => {
+      const isStringType = isString(["rodrigo"]);
+
+      expect(isStringType).toBeDefined();
+      expect(isStringType).toEqual(false);
     });
   });
 });
