@@ -10,7 +10,9 @@ export class ImageLinkHelper {
     const props = options.hash
       ? {
           url: options.hash.url ? options.hash.url : "",
-          description: options.hash.description ? options.hash.description : "",
+          description: options.hash.description
+            ? options.hash.description
+            : "unknown",
           path: options.hash.path ? options.hash.path : "",
         }
       : { url: "", description: "", path: "" };

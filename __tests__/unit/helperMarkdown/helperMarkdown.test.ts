@@ -297,5 +297,20 @@ describe("HelperMarkdown", () => {
         `[![Table Exemple of hbs-markdown-helpers]()](https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png)`
       );
     });
+
+    it("Should return an image link with description equal unknown if not specified in params", async () => {
+      const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+      const handlebarsHelper = new HandlebarsHelpers(
+        data.dataOfTableWrong,
+        `{{md_image_link path="../image/image_test.png" url="https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png"}}`
+      );
+      handlebarsHelper.setMarkdownHelper(helpers);
+      const template = await handlebarsHelper.compileTemplate();
+
+      expect(template).toBeDefined();
+      expect(template).toContain(
+        `[![unknown](../image/image_test.png)](https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png)`
+      );
+    });
   });
 });
