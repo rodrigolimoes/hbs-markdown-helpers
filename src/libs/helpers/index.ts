@@ -15,7 +15,6 @@ export default class HbsMarkdownHelpers {
   getMarkdownHelper = () => {
     return {
       md_array: (values: string): Array<string> => values.split(","),
-      md_indent: () => "&nbsp;".repeat(4),
       md_link: new LinkHelper().getLinkHelper,
       md_table: new TableHelper(this.config).getTableHelper,
       md_checklist: new CheckListHelper().getChecklistHelper,
