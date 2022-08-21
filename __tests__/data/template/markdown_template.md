@@ -48,3 +48,7 @@ _________________
 # Image
 
 ![Table Example of hbs-markdown-helpers library](../image/image_test.png)
+
+# Image Link
+
+[![Table Exemple of hbs-markdown-helpers](../image/image_test.png)](https://github.com/rodrigolimoes/hbs-markdown-helpers/blob/main/__tests__/data/image/image_test.png)
