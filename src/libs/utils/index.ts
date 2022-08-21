@@ -4,6 +4,7 @@ import { formatArray } from "./formatArray";
 import {
   isDate,
   isBoolean,
+  isString,
   isNumber,
   isArray,
   isObjectArray,
@@ -20,4 +21,5 @@ export {
   isNumber,
   isArray,
   isObjectArray,
+  isString,
 };
