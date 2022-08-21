@@ -2,11 +2,16 @@ import { Data } from "../../model/Data/Data";
 import { TableProps } from "../../model/Table/TableProps";
 import { Alignment } from "../../common/tableAlignment.enum";
 import { TableConfig } from "../../model/Table/TableConfig";
-import { isDate, isBoolean, isNumber, isArray } from "../../utils/utilsType";
-import { formatDate } from "../../utils/formatDate";
-import { formatBooleanValue } from "../../utils/formatBooleanValue";
-import { formatArray } from "../../utils/formatArray";
-import { formatTable } from "../../utils/formatTable";
+import {
+  isDate,
+  isBoolean,
+  isNumber,
+  isArray,
+  formatDate,
+  formatBooleanValue,
+  formatArray,
+  formatTable,
+} from "../../utils";
 
 export default class Table {
   private readonly data: Array<Data>;
