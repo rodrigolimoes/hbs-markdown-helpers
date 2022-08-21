@@ -122,6 +122,23 @@ describe("HelperMarkdown", () => {
   });
 
   describe("CheckList", () => {
+    it("Should return a message error if data is not an array of objects", async () => {
+      try {
+        const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+        const handlebarsHelper = new HandlebarsHelpers(
+          data.dataOfTableWrong,
+          "{{md_checklist this}}"
+        );
+        handlebarsHelper.setMarkdownHelper(helpers);
+        await handlebarsHelper.compileTemplate();
+      } catch (e) {
+        const { message } = e as Error;
+
+        expect(message).toBeDefined();
+        expect(message).toEqual("Data is not an array of objects");
+      }
+    });
+
     it("Should return a checklist if params is undefined", async () => {
       const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
       handlebarsHelpers.setMarkdownHelper(helpers);
