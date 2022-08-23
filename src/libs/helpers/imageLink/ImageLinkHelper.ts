@@ -6,7 +6,12 @@ interface ImageLinkHelperOptions {
 }
 
 export class ImageLinkHelper {
-  getImageLinkHelper = (options: ImageLinkHelperOptions) => {
+  /**
+   * This function return the props of ImageLink
+   * @param options
+   * @return ImageLinkProps
+   */
+  getImageLinkProps = (options: ImageLinkHelperOptions): ImageLinkProps => {
     const props = options.hash
       ? {
           url: options.hash.url ? options.hash.url : "",
@@ -17,6 +22,15 @@ export class ImageLinkHelper {
         }
       : { url: "", description: "", path: "" };
 
+    return props;
+  };
+  /**
+   * This function get the Image with link
+   * @param options
+   * @return string
+   */
+  getImageLinkHelper = (options: ImageLinkHelperOptions) => {
+    const props = this.getImageLinkProps(options);
     return new ImageLink(props).generate();
   };
 }
