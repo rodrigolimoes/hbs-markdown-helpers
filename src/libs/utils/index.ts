@@ -10,6 +10,7 @@ import {
   isObjectArray,
 } from "./utilsType";
 import { formatBooleanValue } from "./formatBooleanValue";
+import { isUrl } from "./utilsUrl";
 
 export {
   formatTable,
@@ -22,4 +23,5 @@ export {
   isArray,
   isObjectArray,
   isString,
+  isUrl,
 };
