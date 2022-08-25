@@ -105,6 +105,27 @@ describe("HelperMarkdown", () => {
     );
   });
 
+  it("Should return a table with link", async () => {
+    const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+    const handlebarsHelper = new HandlebarsHelpers(
+      [
+        { acoes: "https://github.com/rodrigolimoes/hbs-markdown-helpers" },
+        { acoes: "https://github.com" },
+      ],
+      `{{md_table this}}`
+    );
+    handlebarsHelper.setMarkdownHelper(helpers);
+    const template = await handlebarsHelper.compileTemplate();
+
+    expect(template).toBeDefined();
+    expect(template).toEqual(
+      "| ACOES                                                         |\n" +
+        "|:--------------------------------------------------------------|\n" +
+        "| [link](https://github.com/rodrigolimoes/hbs-markdown-helpers) |\n" +
+        "| [link](https://github.com)                                    |\n"
+    );
+  });
+
   it("Should return an error message if format date is invalid", async () => {
     try {
       const helpers = new HbsMarkdownHelpers({

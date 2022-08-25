@@ -1,4 +1,5 @@
 import { Data } from "../../model/Data/Data";
+import { Link } from "../index";
 import { TableProps } from "../../model/Table/TableProps";
 import { Alignment } from "../../common/tableAlignment.enum";
 import { TableConfig } from "../../model/Table/TableConfig";
@@ -11,6 +12,7 @@ import {
   formatBooleanValue,
   formatArray,
   formatTable,
+  isUrl,
 } from "../../utils";
 
 export default class Table {
@@ -83,6 +85,10 @@ export default class Table {
 
       if (isArray(element)) {
         element = formatArray({ elementArray: element });
+      }
+
+      if (isUrl(element)) {
+        element = new Link({ url: element, textLink: "link" }).generate();
       }
 
       tableLineSyntax += `| ${element} `;
