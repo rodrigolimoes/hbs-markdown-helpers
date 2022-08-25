@@ -88,7 +88,10 @@ export default class Table {
       }
 
       if (isUrl(element)) {
-        element = new Link({ url: element, textLink: "link" }).generate();
+        element = new Link({
+          url: element,
+          textLink: this.config.customTextLink,
+        }).generate();
       }
 
       tableLineSyntax += `| ${element} `;

@@ -106,7 +106,10 @@ describe("HelperMarkdown", () => {
   });
 
   it("Should return a table with link", async () => {
-    const helpers = new HbsMarkdownHelpers({}).getMarkdownHelper();
+    const helpers = new HbsMarkdownHelpers({
+      configTable: { customTextLink: "Open" },
+    }).getMarkdownHelper();
+
     const handlebarsHelper = new HandlebarsHelpers(
       [
         { acoes: "https://github.com/rodrigolimoes/hbs-markdown-helpers" },
@@ -121,8 +124,8 @@ describe("HelperMarkdown", () => {
     expect(template).toEqual(
       "| ACOES                                                         |\n" +
         "|:--------------------------------------------------------------|\n" +
-        "| [link](https://github.com/rodrigolimoes/hbs-markdown-helpers) |\n" +
-        "| [link](https://github.com)                                    |\n"
+        "| [Open](https://github.com/rodrigolimoes/hbs-markdown-helpers) |\n" +
+        "| [Open](https://github.com)                                    |\n"
     );
   });
 

@@ -20,14 +20,18 @@ export class TableHelper {
     let config: TableConfig = {
       customLabelBoolean: { true: "Yes", false: "No" },
       customFormatDate: "yyyy-mm-dd",
+      customTextLink: "link",
     };
 
     if (this.config && this.config.configTable) {
-      const { customLabelBoolean, customFormatDate } = this.config.configTable;
+      const { customLabelBoolean, customFormatDate, customTextLink } =
+        this.config.configTable;
 
       if (customFormatDate) config.customFormatDate = customFormatDate;
 
       if (customLabelBoolean) config.customLabelBoolean = customLabelBoolean;
+
+      if (customTextLink) config.customTextLink = customTextLink;
     }
 
     return config;
@@ -62,7 +66,8 @@ export class TableHelper {
     if (!isObjectArray(data))
       throw new Error("Data is not an array of objects");
 
-    const { customLabelBoolean, customFormatDate } = this.getConfig();
+    const { customLabelBoolean, customFormatDate, customTextLink } =
+      this.getConfig();
 
     if (!this.isValidatedFormat(customFormatDate))
       throw new Error(
@@ -71,7 +76,7 @@ export class TableHelper {
 
     return new Table(
       data,
-      { customLabelBoolean, customFormatDate },
+      { customLabelBoolean, customFormatDate, customTextLink },
       tableProps
     ).generate();
   };

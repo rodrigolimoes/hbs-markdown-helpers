@@ -6,6 +6,7 @@ describe("Markdown Table", () => {
     const table = new Table(data.students, {
       customFormatDate: "yyyy-mm--dd",
       customLabelBoolean: { true: "Yes", false: "No" },
+      customTextLink: "link",
     }).generate();
 
     expect(table).toBeDefined();
@@ -21,6 +22,7 @@ describe("Markdown Table", () => {
       {
         customFormatDate: "yyyy-mm--dd",
         customLabelBoolean: { true: "Yes", false: "No" },
+        customTextLink: "link",
       },
       {
         headers: ["Name", "Age", "Birth Data", "Matriculate", "Subjects"],
@@ -42,6 +44,7 @@ describe("Markdown Table", () => {
         {
           customFormatDate: "yyyy-mm--dd",
           customLabelBoolean: { true: "Yes", false: "No" },
+          customTextLink: "link",
         },
         {
           headers: ["Name"],
@@ -63,6 +66,7 @@ describe("Markdown Table", () => {
         {
           customFormatDate: "yyyy-mm--dd",
           customLabelBoolean: { true: "Yes", false: "No" },
+          customTextLink: "link",
         },
         {
           dataCells: ["age"],
@@ -83,6 +87,7 @@ describe("Markdown Table", () => {
       {
         customFormatDate: "yyyy-mm--dd",
         customLabelBoolean: { true: "Yes", false: "No" },
+        customTextLink: "link",
       },
       {
         align: "center",
@@ -101,6 +106,7 @@ describe("Markdown Table", () => {
       {
         customFormatDate: "yyyy-mm--dd",
         customLabelBoolean: { true: "Yes", false: "No" },
+        customTextLink: "link",
       },
       {
         align: "right",
@@ -119,6 +125,7 @@ describe("Markdown Table", () => {
       {
         customFormatDate: "yyyy-mm--dd",
         customLabelBoolean: { true: "Yes", false: "No" },
+        customTextLink: "link",
       },
       {
         align: "left",
@@ -135,6 +142,7 @@ describe("Markdown Table", () => {
     const table = new Table(data.students, {
       customFormatDate: "dd/mm/yyyy",
       customLabelBoolean: { true: "Sim", false: "Não" },
+      customTextLink: "link",
     }).generate();
 
     expect(table).toBeDefined();
@@ -153,6 +161,7 @@ describe("Markdown Table", () => {
       {
         customFormatDate: "dd/mm/yyyy",
         customLabelBoolean: { true: "Sim", false: "Não" },
+        customTextLink: "link",
       },
       {
         headers: ["Name", "Birth Data", "Matriculate"],

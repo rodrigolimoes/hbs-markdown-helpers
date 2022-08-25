@@ -7,5 +7,6 @@ export interface HbsMarkdownHelpersConfig {
   configTable?: {
     customLabelBoolean?: CustomLabelBoolean;
     customFormatDate?: string;
+    customTextLink?: string;
   };
 }
